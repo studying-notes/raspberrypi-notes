@@ -24,7 +24,7 @@ apt update && apt upgrade -y
 ```
 
 ```shell
-apt install libjpeg-dev libjpeg8-dev libtiff5-dev zlib1g-dev libfreetype6-dev liblcms2-dev libwebp-dev
+apt install -y libjpeg-dev libjpeg8-dev libtiff5-dev zlib1g-dev libfreetype6-dev liblcms2-dev libwebp-dev
 ```
 
 ```shell
