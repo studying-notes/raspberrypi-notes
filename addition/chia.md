@@ -3,6 +3,7 @@
 ```shell
 git config --global --unset http.https://github.com.proxy
 git config --global http.https://github.com.proxy http://192.168.199.140:8118
+git config --global http.https://github.com.proxy http://slave:7890
 ```
 
 git clone https://github.com/Chia-Network/chia-blockchain.git -b latest --recurse-submodules
@@ -15,11 +16,17 @@ ssh root@slave
 
 ssh root@ubuntu
 
-cd chia-blockchain && . ./activate
-
 ln -s  /mnt/extra/chia/mainnet /root/.chia/mainnet
 
-cd /mnt/extra/chia/chia-blockchain && . ./activate
+. ./activate
+
+deactivate
+
+cd ~/chia-blockchain && . ./activate && chia show -s
+
+cd /mnt/extra/chia/chia-blockchain
+
+cd /mnt/extra/chia/chia-blockchain && . ./activate && chia show -s
 
 ## 添加密钥
 
@@ -33,7 +40,13 @@ filter deer party grape silver away safe select draw crack candy syrup vanish ev
 
 chia start farmer
 
+chia start farmer -r
+
 chia stop farmer
+
+chia stop farmer && chia start farmer
+
+chia start wallet
 
 chia wallet show
 
@@ -46,10 +59,11 @@ chia show -s
 
 chia plots add -d '/mnt/extra/plots'
 chia plots add -d '/mnt/plots/plots'
-chia plots add -d '/mnt/plots/windows'
-chia plots add -d '/mnt/plots/raspberry'
+chia plots add -d '/mnt/plots2/plots'
+chia plots add -d '/mnt/plots3/plots'
 
-chia plots remove -d /mnt/extra/plots
+chia plots remove -d /mnt/plots/raspberry
+chia plots remove -d /mnt/plots/windows
 
 chia plots check
 

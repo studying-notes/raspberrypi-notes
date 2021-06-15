@@ -37,7 +37,10 @@ echo '#!/bin/sh -e
 
 #start script
 
-/usr/bin/python /projects/comic-scrapy/internal/resource.py &
+/usr/bin/python /projects/scrapy-comics/backend/resource.py &
+/usr/bin/bash /projects/scrapy-comics/scripts/restart.sh &
+/usr/bin/bash /projects/scrapy-images/scripts/restart.sh &
+/root/go/bin/clash -f /mnt/extra/mirror/configs/clash_config.yaml &
 
 #end script
 exit 0

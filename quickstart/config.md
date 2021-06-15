@@ -19,6 +19,19 @@ toc: true  # 是否自动生成目录
 draft: false  # 草稿
 ---
 
+## hosts
+
+```shell
+echo '
+192.168.199.101 slave
+192.168.199.105 ubuntu
+' >> /etc/hosts
+```
+
+```shell
+sysctl --system  #生效
+```
+
 ## 将系统刻录进 U 盘
 
 https://www.raspberrypi.org/software/

@@ -155,13 +155,13 @@ localhost:8080
 ## MySQL
 
 ```shell
-docker pull jsurf/rpi-mariadb
+docker pull arm64v8/mariadb
 ```
 
 ### 3306 端口
 
 ```shell
-docker run --restart=always -itd --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root mysql
+docker run --restart=always -itd --name mariadb -v /mnt/extra/docker/mysql:/var/lib/mysql -p 3306:3306 -e MARIADB_ROOT_PASSWORD=root arm64v8/mariadb
 ```
 
 - `-p 3306:3306` ：映射容器服务的 3306 端口到宿主机的 3306 端口，外部主机可以直接通过宿主机 `ip:3306` 访问到 MySQL 的服务
