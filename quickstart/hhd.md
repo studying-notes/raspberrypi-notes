@@ -48,32 +48,21 @@ apt install -y exfat-fuse exfat-utils
 1. 创建硬盘挂载目录
 
 ```shell
-mkdir /mnt/storage  /mnt/extra
+mkdir /mnt/sda  /mnt/sdb  /mnt/sdc
 
-mkdir /mnt/plots
+umount /mnt/sda  /mnt/sdb  /mnt/sdc
 
-umount  /mnt/plots2 /mnt/plots3
-rm -rf  /mnt/plots2 /mnt/plots3
-mkdir /mnt/plots2 /mnt/plots3
+rm -rf /mnt/sda  /mnt/sdb  /mnt/sdc
 ```
 
 4. 挂载硬盘
 
 ```shell
-mount /dev/sdb /mnt/extra
+mount /dev/sda /mnt/sda
+mount /dev/sdb /mnt/sdb
+mount /dev/sdc /mnt/sdc
 
-mount /dev/sda /mnt/plots
-mount /dev/sda /mnt/netac
-
-mkdir /mnt/plots2 /mnt/plots3
-
-mount -t exfat /dev/sdc2 /mnt/plots2
-mount -t exfat /dev/sdd2 /mnt/plots3
-```
-
-```shell
-mount /dev/sdc1 /mnt/storage
-mount /dev/sda /mnt/extra
+mount -t exfat /dev/sdd2 /mnt/sdd2
 ```
 
 再次查询：
@@ -82,11 +71,6 @@ mount /dev/sda /mnt/extra
 df -h -T
 ```
 
-cd /mnt/extra/new
-cd /mnt/plots/new
-cd /mnt/plots2/new
-cd /mnt/plots3/new
-
 ```bash
 dd if=/dev/zero of=test bs=10M count=200
 ```
@@ -94,10 +78,9 @@ dd if=/dev/zero of=test bs=10M count=200
 ### 硬盘权限
 
 ```shell
-chmod 777 /mnt/storage
-chmod 777 /mnt/extra
-chmod 777 /mnt/nfs
-chmod 777 /mnt/plots
+chmod 777 /mnt/sda
+chmod 777 /mnt/sdb
+chmod 777 /mnt/sdc
 ```
 
 ### 开机自动挂载
@@ -117,12 +100,11 @@ vim /etc/fstab
 1. 按照格式添加
 
 ```shell
-UUID=c01ca4d1-2582-45cf-b523-74fca287f7d2    /mnt/storage     ext4    defaults    0   0
-UUID=565a23d5-17d8-49e4-af86-2fa184d56c81    /mnt/extra     ext4    defaults    0   0
-UUID=84db985a-5aa8-429f-b5ec-539e4d5e5fcb    /mnt/nfs     ext4    defaults    0   0
+UUID=d87bdbd5-39c5-4f12-ba7d-ef8882c3de29    /mnt/sda     ext4    defaults    0   0
+UUID=565a23d5-17d8-49e4-af86-2fa184d56c81    /mnt/sdb     ext4    defaults    0   0
+UUID=3dc16e6a-9d2b-4fa4-be12-a464dc84bc2b    /mnt/sdc     ext4    defaults    0   0
 
-UUID=E845-FADE    /mnt/plots2     exfat    defaults    0   0
-UUID=F042-A825    /mnt/plots3     exfat    defaults    0   0
+UUID=E845-FADE    /mnt/sdd2     exfat    defaults    0   0
 ```
 
 4. 测试一下是否有问题

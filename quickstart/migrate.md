@@ -1,5 +1,0 @@
-- config.md
-- hhd.md
-- ftp.md
-- docker.md
-- gitea

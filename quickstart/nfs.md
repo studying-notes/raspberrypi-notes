@@ -14,10 +14,9 @@ apt install -y nfs-kernel-server nfs-common rpcbind
 
 ```shell
 echo '
-/mnt/extra       192.168.199.0/24(rw,no_root_squash,insecure,no_subtree_check,async)
-/mnt/plots       192.168.199.0/24(rw,no_root_squash,insecure,no_subtree_check,async)
-/mnt/plots2       192.168.199.0/24(rw,no_root_squash,insecure,no_subtree_check,async)
-/mnt/plots3       192.168.199.0/24(rw,no_root_squash,insecure,no_subtree_check,async)
+/mnt/sda       192.168.199.0/24(rw,no_root_squash,insecure,no_subtree_check,async)
+/mnt/sdb       192.168.199.0/24(rw,no_root_squash,insecure,no_subtree_check,async)
+/mnt/sdc       192.168.199.0/24(rw,no_root_squash,insecure,no_subtree_check,async)
 ' > /etc/exports
 ```
 
@@ -27,7 +26,7 @@ systemctl restart nfs-kernel-server
 ```
 
 ```shell
-showmount -e ubuntu
+showmount -e master
 showmount -e slave
 ```
 

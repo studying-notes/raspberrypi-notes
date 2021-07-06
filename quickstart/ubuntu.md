@@ -25,6 +25,8 @@ ubuntu sever 默认用户密码
 
 ubuntu@ubuntu
 
+ssh ubuntu@192.168.199.218
+
 ## WiFi 联网设置
 
 https://ubuntu.com/tutorials/how-to-install-ubuntu-on-your-raspberry-pi#3-wifi-or-ethernet
@@ -105,14 +107,18 @@ ln -s /usr/bin/pip3 /usr/bin/pip
 
 ```shell
 pip3 install toolkit-py -i https://pypi.douban.com/simple  # 个人工具包
+
+pip3 uninstall -y toolkit-py # 个人工具包
 ```
 
 ```shell
 chs # 换源
 ```
 
-```shell
+## Go
 
+```shell
+snap install go --classic
 ```
 
 ```shell

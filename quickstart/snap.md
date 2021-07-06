@@ -29,6 +29,9 @@ snap set system proxy.https="http://slave:7890"
 snap set system proxy.http="http://192.168.199.140:8118"
 snap set system proxy.https="http://192.168.199.140:8118"
 
+snap set system proxy.http="http://192.168.199.140:7890"
+snap set system proxy.https="http://192.168.199.140:7890"
+
 snap set system proxy.http="socks5://localhost:10808"
 snap set system proxy.https="socks5://localhost:10808"
 

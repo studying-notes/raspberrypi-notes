@@ -56,7 +56,8 @@ snap remove chromium
 ## 安装 chromium-browser
 
 ```shell
-apt install -y chromium-browser chromium-chromedriver
+apt install -y chromium-browser
+apt install -y chromium-chromedriver
 ```
 
 ```shell

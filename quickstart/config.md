@@ -84,6 +84,8 @@ sed -i "s/PermitRootLogin prohibit-password/#PermitRootLogin prohibit-password/g
 systemctl restart ssh
 ```
 
+echo master > /etc/hostname
+
 ### 上传免密公钥
 
 ```shell
@@ -92,7 +94,7 @@ ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.199.208
 
 ```shell
 ssh-copy-id -i ~/.ssh/id_rsa.pub root@slave
-ssh-copy-id -i ~/.ssh/id_rsa.pub root@ubuntu
+ssh-copy-id -i ~/.ssh/id_rsa.pub root@master
 ```
 
 ```shell

@@ -3,7 +3,6 @@
 ```shell
 git config --global --unset http.https://github.com.proxy
 git config --global http.https://github.com.proxy http://192.168.199.140:8118
-git config --global http.https://github.com.proxy http://slave:7890
 ```
 
 git clone https://github.com/Chia-Network/chia-blockchain.git -b latest --recurse-submodules
