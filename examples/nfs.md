@@ -18,17 +18,13 @@ draft: false  # 草稿
 apt install -y nfs-kernel-server nfs-common rpcbind
 ```
 
-/etc/default/nfs-kernel-server
-/etc/default/nfs-common
-/etc/exports
-
 ## 编辑配置文件
 
 ```shell
 echo '
-/mnt/sda       192.168.199.0/24(rw,no_root_squash,insecure,no_subtree_check,async)
-/mnt/sdb       192.168.199.0/24(rw,no_root_squash,insecure,no_subtree_check,async)
-/mnt/sdc       192.168.199.0/24(rw,no_root_squash,insecure,no_subtree_check,async)
+/mnt/sda       192.168.0.0/24(rw,no_root_squash,insecure,no_subtree_check,async)
+/mnt/sdb       192.168.0.0/24(rw,no_root_squash,insecure,no_subtree_check,async)
+/mnt/sdc       192.168.0.0/24(rw,no_root_squash,insecure,no_subtree_check,async)
 ' > /etc/exports
 ```
 
@@ -43,7 +39,6 @@ systemctl restart nfs-kernel-server
 
 ```shell
 showmount -e master
-showmount -e slave
 ```
 
 ## 重启自动加载
@@ -53,12 +48,7 @@ vim /etc/fstab
 ```
 
 ```
-ubuntu:/mnt/extra  /mnt/extra       nfs    defaults 0 0
-```
-
-```
-slave:/mnt/plots2  /mnt/plots2       nfs    defaults 0 0
-slave:/mnt/plots3  /mnt/plots3       nfs    defaults 0 0
+master:/mnt/sda  /mnt/sda       nfs    defaults 0 0
 ```
 
 ```shell
@@ -74,15 +64,10 @@ df -Th
 CMD 命令行挂载到 N 盘：
 
 ```shell
-mount -o nolock \\ubuntu\mnt\extra N:\
-mount -o nolock \\ubuntu\mnt\plots L:\
-
-mount -o nolock \\slave\mnt\plots2 K:\
-mount -o nolock \\slave\mnt\plots3 O:\
+mount -o nolock \\master\mnt\a L:\
 ```
 
 ```shell
-umount N:\
 umount L:\
 ```
 
