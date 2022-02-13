@@ -64,11 +64,11 @@ df -Th
 CMD 命令行挂载到 N 盘：
 
 ```shell
-mount -o nolock \\master\mnt\a L:\
+mount -o nolock \\master\mnt\sda Z:\
 ```
 
 ```shell
-umount L:\
+umount Z:\
 ```
 
 打开注册表
