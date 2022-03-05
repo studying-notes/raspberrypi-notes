@@ -45,3 +45,7 @@ draft: false  # 草稿
 
 - [NFS 文件系统安装与部署](examples/nfs.md)
 - [代理相关的软件和配置](examples/proxy.md)
+
+## 第三方库
+
+-[OpenCV 安装与测试](libraries/tripartite/opencv.md)
