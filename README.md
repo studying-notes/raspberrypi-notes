@@ -48,4 +48,4 @@ draft: false  # 草稿
 
 ## 第三方库
 
--[OpenCV 安装与测试](libraries/tripartite/opencv.md)
+- [OpenCV 安装与测试](libraries/tripartite/opencv.md)
