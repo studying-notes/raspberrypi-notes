@@ -36,10 +36,12 @@ draft: false  # 草稿
 
 ## 基础用法
 
-## 基础语法
+### 系统安装
 
-## 库
+- [Ubuntu 系统安装与基本配置](quickstart/install/ubuntu.md)
+- [Raspberry Pi OS 系统安装与基本配置](quickstart/install/raspberrypios.md)
 
-## 标准库
+## 功能示例
 
-## 第三方库
+- [NFS 文件系统安装与部署](examples/nfs.md)
+- [代理相关的软件和配置](examples/proxy.md)
