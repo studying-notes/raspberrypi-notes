@@ -30,10 +30,12 @@ draft: false  # 草稿
   - [无显示器 VNC](#无显示器-vnc)
     - [无法显示桌面问题](#无法显示桌面问题)
 - [换源](#换源)
+  - [添加信任](#添加信任)
 - [设置常用别名](#设置常用别名)
-- [安装 Python](#安装-python)
+- [设置 Python](#设置-python)
 - [时间同步](#时间同步)
 - [关闭指示灯](#关闭指示灯)
+  - [永久关闭](#永久关闭)
 
 ## 将系统刻录进 U 盘
 
@@ -93,14 +95,8 @@ echo master > /etc/hostname
 
 ```shell
 ssh-copy-id -i ~/.ssh/id_rsa.pub root@master
-```
-
-```shell
-ssh-copy-id -i ~/.ssh/id_rsa.pub root@master
-```
-
-```shell
-ssh root@master
+ssh-copy-id -i ~/.ssh/id_rsa.pub root@raspberrypi
+ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.4.110
 ```
 
 ### 不显示登录标语
@@ -131,7 +127,6 @@ New desktop is raspberrypi:1 (master:1)
 
 > Cannot currently show the desktop
 
-
 ```shell
 raspi-config
 ```
@@ -147,24 +142,35 @@ reboot
 ## 换源
 
 ```shell
-cfm respberry
+pip install -U toolkit-py -i https://pypi.douban.com/simple
 ```
 
 ```shell
-rm /var/lib/apt/lists/lock
+cfm pi
+```
+
+非官方源在安装某些软件时会有问题，比如 CMake、Snap，所以现在宁可慢点，也不换源了。
+
+### 添加信任
+
+```shell
+gpg --keyserver  keyserver.ubuntu.com --recv-keys 648ACFD622F3D138
+gpg --export --armor  648ACFD622F3D138 | sudo apt-key add -
 ```
 
 ```shell
-apt-get update && apt-get upgrade -y
+apt update && apt upgrade -y
 ```
 
 ## 设置常用别名
 
 ```shell
-ccf alias
+ccf alias -w
 ```
 
-## 安装 Python
+## 设置 Python
+
+已经自带 Python2 和 Python3，之前默认是 Python2，最新版已经是默认 Python3.9 了。
 
 ```shell
 cp /usr/bin/python /usr/bin/python2
@@ -180,58 +186,7 @@ ln -s /usr/bin/pip3 /usr/bin/pip
 ```
 
 ```shell
-pip3 install toolkit-py # 个人工具包
-```
-
-```shell
-cfm respberry
-```
-
-树莓派的配置文件是 `/etc/pip.conf`
-
-```shell
-cat ~/.pip/pip.conf > /etc/pip.conf
-```
-
-```shell
-pip3 install --upgrade --force jupyter-console
-```
-
-```shell
-python3 -m pip install -U opencv-python
-```
-
-
-```shell
-python3 -m pip install -U jupyterlab
-```
-
-```shell
-python3 -m IPython
-```
-
-```shell
-from notebook.auth import passwd
-passwd()
-```
-
-```shell
-jupyter lab --generate-config
-```
-
-/root/.jupyter/jupyter_lab_config.py
-
-```shell
-# 免密
-c.ServerApp.token = ''
-```
-
-```shell
-jupyter lab --allow-root
-```
-
-```shell
-nohup jupyter lab --allow-root > jupyter.log 2>&1 &
+pip install -U toolkit-py -i https://pypi.douban.com/simple # 个人工具包
 ```
 
 ## 时间同步
@@ -247,8 +202,56 @@ ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' 
 ## 关闭指示灯
 
 ```shell
-echo 0 | sudo tee  /sys/class/leds/led0/brightness
-echo none | sudo tee  /sys/class/leds/led0/trigger
-echo none | sudo tee  /sys/class/leds/led1/trigger
-echo 0 | sudo tee /sys/class/leds/led1/brightness
+echo 0 | tee  /sys/class/leds/led0/brightness
+echo none | tee  /sys/class/leds/led0/trigger
+echo none | tee  /sys/class/leds/led1/trigger
+echo 0 | tee /sys/class/leds/led1/brightness
+```
+
+### 永久关闭
+
+/boot/config.txt
+
+```
+act_led_trigger         Choose which activity the LED tracks.
+                        Use "heartbeat" for a nice load indicator.
+                        (default "mmc")
+act_led_activelow       Set to "on" to invert the sense of the LED
+                        (default "off")
+                        N.B. For Pi 3B, 3B+, 3A+ and 4B, use the act-led
+                        overlay.
+act_led_gpio            Set which GPIO to use for the activity LED
+                        (in case you want to connect it to an external
+                        device)
+                        (default "16" on a non-Plus board, "47" on a
+                        Plus or Pi 2)
+                        N.B. For Pi 3B, 3B+, 3A+ and 4B, use the act-led
+                        overlay
+pwr_led_trigger
+pwr_led_activelow
+pwr_led_gpio
+                        As for act_led_*, but using the PWR LED.
+                        Not available on Model A/B boards.
+```
+
+即可以通过关闭 act_led_trigger 和 pwr_led_trigger 追踪的方式来关闭树莓派上的指示灯
+
+在 /boot/config.txt 文件中添加以下命令即可：
+
+```
+dtparam=act_led_trigger=none
+dtparam=pwr_led_trigger=none
+```
+
+树莓派的网络指示灯也可以进行自定义配置：
+
+```
+eth_led0                Set mode of LED0 (usually orange) (default
+                        "1"). The legal values are:
+                        0=link/activity          1=link1000/activity
+                        2=link100/activity       3=link10/activity
+                        4=link100/1000/activity  5=link10/1000/activity
+                        6=link10/100/activity    14=off    15=on
+eth_led1                Set mode of LED1 (usually green) (default
+                        "6"). See eth_led0 for legal values.
 ```
