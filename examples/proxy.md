@@ -16,27 +16,65 @@ draft: false  # 草稿
 
 ```shell
 curl --socks5 localhost:7891 http://google.com/
+curl --socks5 192.168.4.118:8838 https://www.baidu.com
+curl --socks5 localhost:8838 https://www.baidu.com
 ```
 
 ```shell
 curl -x localhost:7890 http://google.com/
+curl -x localhost:8118 http://google.com/
+curl -x localhost:8118 http://baidu.com/
 ```
 
 ```shell
 curl -x localhost:7890 http://baidu.com/
+curl -x 192.168.4.118:8118 https://www.baidu.com
+```
+
+## apt 代理
+
+```shell
+apt -o Acquire::http::proxy="http://192.168.4.118:8118/" update
+apt -o Acquire::http::proxy="http://192.168.4.118:8118/" -y upgrade
+```
+
+```shell
+alias apt='apt -o Acquire::http::proxy="http://192.168.4.118:8118/"'
+```
+
+```shell
+cat > ~/apt_proxy.conf << EOF
+Acquire::http::proxy "http://127.0.0.1:8000/";
+Acquire::ftp::proxy "ftp://127.0.0.1:8000/";
+Acquire::https::proxy "https://127.0.0.1:8000/";
+EOF
 ```
 
 ## Git 代理
 
 ```shell
 git config --global http.https://github.com.proxy http://192.168.199.140:8118
-git config --global http.https://github.com.proxy socks://localhost:10808
+git config --global http.https://github.com.proxy socks://localhost:8838
 ```
 
 ### 取消代理
 
 ```shell
 git config --global --unset http.https://github.com.proxy
+git config --global --add github.com.proxy ""
+git config --global --add github.com.proxy "localhost:8838"
+```
+
+## Windows Cmd
+
+```
+set HTTP_PROXY=http://localhost:8118
+set HTTPS_PROXY=http://localhost:8118
+```
+
+```
+export HTTP_PROXY=http://localhost:8118
+export HTTPS_PROXY=http://localhost:8118
 ```
 
 ## v2ray
