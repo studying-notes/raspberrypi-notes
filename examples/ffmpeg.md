@@ -12,4 +12,6 @@ toc: true  # 目录
 draft: false  # 草稿
 ---
 
+apt install -y ffmpeg
+
 snap install --edge ffmpeg

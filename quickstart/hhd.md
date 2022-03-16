@@ -123,7 +123,9 @@ cp -r /root /mnt/sda/root
 
 rm -rf /root
 
+# 这样搞 snap 直接罢工，无语啊，无解，只能放弃使用 snap
 ln -s /mnt/sda/root /root
+
 ln -s /mnt/sda/dockerd /var/lib/docker
 ```
 
