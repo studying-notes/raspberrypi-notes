@@ -20,6 +20,11 @@ draft: false  # 草稿
 
 - [默认用户名与密码](#默认用户名与密码)
 - [WiFi 联网设置](#wifi-联网设置)
+- [开启 SSH 服务](#开启-ssh-服务)
+  - [开机自启](#开机自启)
+  - [启用 root 登录](#启用-root-登录)
+  - [设置主机名](#设置主机名)
+  - [上传免密公钥](#上传免密公钥)
 - [换源](#换源)
 - [时间同步](#时间同步)
 - [Python](#python)
@@ -70,6 +75,55 @@ network:
                         "WiFi名称":
                                 password: "WiFi密码"
                     dhcp4: true
+```
+
+## 开启 SSH 服务
+
+### 开机自启
+
+```shell
+systemctl enable ssh.service
+```
+
+### 启用 root 登录
+
+1. 设置 root 用户密码
+
+```shell
+passwd root
+```
+
+```shell
+root
+```
+
+2. 添加设置
+
+```shell
+echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
+```
+
+```shell
+sed -i "s/PermitRootLogin prohibit-password/#PermitRootLogin prohibit-password/g" /etc/ssh/sshd_config
+```
+
+3. 重启服务
+
+```shell
+systemctl restart ssh
+```
+
+### 设置主机名
+
+```shell
+echo master > /etc/hostname
+```
+
+### 上传免密公钥
+
+```shell
+ssh-copy-id -i ~/.ssh/id_rsa.pub root@master
+ssh-copy-id -i ~/.ssh/id_rsa.pub root@raspberrypi
 ```
 
 ## 换源
