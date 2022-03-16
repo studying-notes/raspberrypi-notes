@@ -180,9 +180,3 @@ pip install toolkit-py -i https://pypi.douban.com/simple  # 个人工具包
 ```shell
 cfm py
 ```
-
-## Go
-
-```shell
-snap install go --classic
-```
