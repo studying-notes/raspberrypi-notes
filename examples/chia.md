@@ -1,3 +1,17 @@
+---
+date: 2022-03-16T21:33:33+08:00
+author: "Rustle Karl"
+
+title: "Chai 配置"
+url:  "posts/raspberrypi/examples/chia"  # 永久链接
+tags: [ "Raspberrypi" ]  # 标签
+series: [ "Raspberrypi 学习笔记" ]  # 系列
+categories: [ "学习笔记" ]  # 分类
+
+toc: true  # 目录
+draft: false  # 草稿
+---
+
 ## 下载项目
 
 ```shell
