@@ -66,7 +66,7 @@ passwd root
 ```
 
 ```shell
-pi
+root
 ```
 
 2. 添加设置
@@ -96,7 +96,7 @@ echo master > /etc/hostname
 ```shell
 ssh-copy-id -i ~/.ssh/id_rsa.pub root@master
 ssh-copy-id -i ~/.ssh/id_rsa.pub root@raspberrypi
-ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.4.110
+ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.4.171
 ```
 
 ### 不显示登录标语

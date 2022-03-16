@@ -24,9 +24,23 @@ draft: false  # 草稿
 - [时间同步](#时间同步)
 - [Python](#python)
 - [Go](#go)
-- [无线手柄](#无线手柄)
 
 ## 默认用户名与密码
+
+好久不搞了，今天重装系统，居然发现登录后无法改密码。
+
+```
+passwd: Authentication token manipulation error
+```
+
+`user-data`
+
+```
+chpasswd:
+  expire: false
+  list:
+  - ubuntu:ubuntu
+```
 
 ```
 ubuntu@ubuntu
@@ -34,7 +48,7 @@ ubuntu@ubuntu
 
 ## WiFi 联网设置
 
-https://ubuntu.com/tutorials/how-to-install-ubuntu-on-your-raspberry-pi#3-wifi-or-ethernet
+http://ubuntu.com/tutorials/how-to-install-ubuntu-on-your-raspberry-pi#3-wifi-or-ethernet
 
 ```shell
 cat /etc/netplan/50-cloud-init.yaml
@@ -60,24 +74,26 @@ network:
 
 ## 换源
 
-https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu-ports/
+http://mirrors.tuna.tsinghua.edu.cn/help/ubuntu-ports/
 
 ```shell
 echo "
-deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ focal main restricted universe multiverse
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ focal main restricted universe multiverse
-deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ focal-updates main restricted universe multiverse
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ focal-updates main restricted universe multiverse
-deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ focal-backports main restricted universe multiverse
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ focal-backports main restricted universe multiverse
-deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ focal-security main restricted universe multiverse
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ focal-security main restricted universe multiverse
+deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ focal main restricted universe multiverse
+# deb-src http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ focal main restricted universe multiverse
+deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ focal-updates main restricted universe multiverse
+# deb-src http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ focal-updates main restricted universe multiverse
+deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ focal-backports main restricted universe multiverse
+# deb-src http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ focal-backports main restricted universe multiverse
+deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ focal-security main restricted universe multiverse
+# deb-src http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ focal-security main restricted universe multiverse
 " > /etc/apt/sources.list
 ```
 
 ```shell
-apt-get update && apt-get upgrade -y
+apt update && apt upgrade -y
 ```
+
+可能会遇到锁问题，强制删除锁即可。
 
 ## 时间同步
 
@@ -104,9 +120,7 @@ ln -s /usr/bin/pip3 /usr/bin/pip
 ```
 
 ```shell
-pip3 install toolkit-py -i https://pypi.douban.com/simple  # 个人工具包
-
-pip3 uninstall -y toolkit-py # 个人工具包
+pip install toolkit-py -i https://pypi.douban.com/simple  # 个人工具包
 ```
 
 ```shell
@@ -117,14 +131,4 @@ cfm py
 
 ```shell
 snap install go --classic
-```
-
-## 无线手柄
-
-```shell
-pip install spidev
-```
-
-```shell
-apt-get -y install python3-rpi.gpio python3-pip
 ```
