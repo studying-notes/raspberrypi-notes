@@ -41,10 +41,15 @@ draft: false  # 草稿
 - [Ubuntu 系统安装与基本配置](quickstart/install/ubuntu.md)
 - [Raspberry Pi OS 系统安装与基本配置](quickstart/install/raspberrypios.md)
 
+### 硬件配置
+
+-[树莓派读写移动硬盘](quickstart/hhd.md)
+
 ## 功能示例
 
 - [NFS 文件系统安装与部署](examples/nfs.md)
 - [代理相关的软件和配置](examples/proxy.md)
+- [树莓派安装 Docker](examples/docker.md)
 
 ## 第三方库
 
