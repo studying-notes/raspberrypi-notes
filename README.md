@@ -43,7 +43,8 @@ draft: false  # 草稿
 
 ### 硬件配置
 
--[树莓派读写移动硬盘](quickstart/hhd.md)
+- [树莓派读写移动硬盘](quickstart/hhd.md)
+- [花生壳内网穿透](quickstart/oray.md)
 
 ## 功能示例
 
