@@ -55,6 +55,8 @@ draft: false  # 草稿
 - [NFS 文件系统安装与部署](examples/nfs.md)
 - [代理相关的软件和配置](examples/proxy.md)
 - [树莓派安装 Docker](examples/docker.md)
+- [Chia 配置](examples/chia.md)
+- [安装 FFmpeg](examples/ffmpeg.md)
 
 ## 第三方库
 
