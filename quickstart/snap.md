@@ -1,5 +1,16 @@
+---
+date: 2022-03-16T21:15:08+08:00
+author: "Rustle Karl"
 
-## 安装 Snap Store
+title: "安装 Snap Store"
+url:  "posts/raspberrypi/quickstart/snap"  # 永久链接
+tags: [ "Raspberrypi" ]  # 标签
+series: [ "Raspberrypi 学习笔记" ]  # 系列
+categories: [ "学习笔记" ]  # 分类
+
+toc: true  # 目录
+draft: false  # 草稿
+---
 
 ```shell
 apt install -y snapd
@@ -15,19 +26,7 @@ snap install snap-store
 ```
 
 snap changes
-sudo snap abort 4
 snap refresh package
-
-fuser -v /var/cache/debconf/config.dat
-
-snap set system proxy.http="http://slave:7890"
-snap set system proxy.https="http://slave:7890"
-
-snap set system proxy.http="http://slave:7890"
-snap set system proxy.https="http://slave:7890"
-
-snap set system proxy.http="http://192.168.199.140:8118"
-snap set system proxy.https="http://192.168.199.140:8118"
 
 snap set system proxy.http="http://192.168.199.140:7890"
 snap set system proxy.https="http://192.168.199.140:7890"
