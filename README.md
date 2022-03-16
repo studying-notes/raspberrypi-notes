@@ -51,6 +51,7 @@ draft: false  # 草稿
 - [安装 Snap Store](quickstart/snap.md)
 - [安装配置 Golang](quickstart/golang.md)
 - [设置开机自启动脚本](quickstart/reboot.md)
+- [定时执行任务](quickstart/cron.md)
 
 ## 功能示例
 
