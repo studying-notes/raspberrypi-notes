@@ -50,6 +50,7 @@ draft: false  # 草稿
 - [花生壳内网穿透](quickstart/oray.md)
 - [安装 Snap Store](quickstart/snap.md)
 - [安装配置 Golang](quickstart/golang.md)
+- [设置开机自启动脚本](quickstart/reboot.md)
 
 ## 功能示例
 
