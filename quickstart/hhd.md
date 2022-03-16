@@ -5,7 +5,7 @@ author: "Rustle Karl"  # 作者
 # 文章
 title: "树莓派读写移动硬盘"  # 文章标题
 # description: "文章描述"
-url:  "posts/raspberrypi/hhd"  # 设置网页永久链接
+url:  "posts/raspberrypi/quickstart/hhd"  # 设置网页永久链接
 tags: [ "raspberrypi", "hhd"]  # 标签
 series: [ "树莓派学习笔记"]  # 系列
 categories: [ "学习笔记"]  # 分类
@@ -21,7 +21,13 @@ draft: false  # 草稿
 
 ## 挂载硬盘
 
+```shell
+apt install -y exfat-fuse exfat-utils
+```
+
 树莓派关机状态下插入移动硬盘，开机。
+
+### 格式化硬盘
 
 1. 查询硬盘信息
 
@@ -39,30 +45,25 @@ lsblk
 
 ```shell
 mkfs -t ext4 /dev/sda
-mkfs -t ext4 /dev/sdb
-mkfs -t ext4 /dev/sdc
 ```
 
-apt install -y exfat-fuse exfat-utils
+### 挂载目录
 
 1. 创建硬盘挂载目录
 
 ```shell
 mkdir /mnt/sda  /mnt/sdb  /mnt/sdc
-
 umount /mnt/sda  /mnt/sdb  /mnt/sdc
-
 rm -rf /mnt/sda  /mnt/sdb  /mnt/sdc
 ```
 
-4. 挂载硬盘
+2. 挂载硬盘
 
 ```shell
 mount /dev/sda /mnt/sda
-mount /dev/sdb /mnt/sdb
-mount /dev/sdc /mnt/sdc
 
-mount -t exfat /dev/sdd2 /mnt/sdd2
+# exfat 格式
+mount -t exfat /dev/sdb /mnt/sdb
 ```
 
 再次查询：
@@ -79,8 +80,6 @@ dd if=/dev/zero of=test bs=10M count=200
 
 ```shell
 chmod 777 /mnt/sda
-chmod 777 /mnt/sdb
-chmod 777 /mnt/sdc
 ```
 
 ### 开机自动挂载
@@ -100,11 +99,11 @@ vim /etc/fstab
 1. 按照格式添加
 
 ```shell
-UUID=d87bdbd5-39c5-4f12-ba7d-ef8882c3de29    /mnt/sda     ext4    defaults    0   0
-UUID=565a23d5-17d8-49e4-af86-2fa184d56c81    /mnt/sdb     ext4    defaults    0   0
-UUID=3dc16e6a-9d2b-4fa4-be12-a464dc84bc2b    /mnt/sdc     ext4    defaults    0   0
+# ext4 格式
+UUID=c957486a-bc06-4ef6-b689-664cc1f20a10    /mnt/sda     ext4    defaults    0   0
 
-UUID=E845-FADE    /mnt/sdd2     exfat    defaults    0   0
+# exfat 格式
+UUID=E845-FADE    /mnt/sdb     exfat    defaults    0   0
 ```
 
 4. 测试一下是否有问题
@@ -118,15 +117,15 @@ mount -a
 ## 迁移文件
 
 ```shell
-mkdir docker comics mirror merls repositories developer
+cd /mnt/sda && mkdir dockerd docker mirror merls root
+
+cp -r /root /mnt/sda/root
+
+rm -rf /root
+
+ln -s /mnt/sda/root /root
+ln -s /mnt/sda/dockerd /var/lib/docker
 ```
-
-```shell
-cp /mnt/storage/service/* /mnt/extra/docker/
-cp /mnt/storage/system/docker/* /mnt/extra/docker/dockerd
-```
-
-
 
 ### 通过 mount 挂载另一个分区来扩展可用存储空间
 
