@@ -58,6 +58,7 @@ draft: false  # 草稿
 - [树莓派安装 Docker](examples/docker.md)
 - [Chia 配置](examples/chia.md)
 - [安装 FFmpeg](examples/ffmpeg.md)
+- [树莓派配置 OneDrive](examples/onedrive.md)
 
 ## 第三方库
 
