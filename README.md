@@ -45,6 +45,7 @@ draft: false  # 草稿
 
 - [树莓派读写移动硬盘](quickstart/hhd.md)
 - [netdata 实时监视性能和运行状况](examples/netdata.md)
+- [安装 GPIO 驱动](quickstart/gpio.md)
 
 ### 软件设置
 
