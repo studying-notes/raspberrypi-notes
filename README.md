@@ -62,6 +62,7 @@ draft: false  # 草稿
 - [Chia 配置](examples/chia.md)
 - [安装 FFmpeg](examples/ffmpeg.md)
 - [树莓派配置 OneDrive](examples/onedrive.md)
+- [树莓派 Ubuntu 系统安装 Selenium 和 Chrome 浏览器](examples/selenium.md)
 
 ## 第三方库
 

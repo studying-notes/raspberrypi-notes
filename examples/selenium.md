@@ -5,7 +5,7 @@ author: "Rustle Karl"  # 作者
 # 文章
 title: "树莓派 Ubuntu 系统安装 Selenium 和 Chrome 浏览器"  # 文章标题
 # description: "文章描述"
-url:  "posts/raspberrypi/selenium"  # 设置网页永久链接
+url:  "posts/raspberrypi/examples/selenium"  # 设置网页永久链接
 tags: [ "raspberrypi", "selenium"]  # 标签
 series: [ "树莓派学习笔记"]  # 系列
 categories: [ "学习笔记"]  # 分类
