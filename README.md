@@ -44,6 +44,7 @@ draft: false  # 草稿
 ### 硬件配置
 
 - [树莓派读写移动硬盘](quickstart/hhd.md)
+- [netdata 实时监视性能和运行状况](examples/netdata.md)
 
 ### 软件设置
 
