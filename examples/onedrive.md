@@ -19,6 +19,8 @@ draft: false  # 草稿
 ```shell
 mkdir -p /mnt/sda/onedrive
 ln -s  /mnt/sda/onedrive ~/OneDrive
+
+ln -s /media/rustlekarl/Linux/OneDrive ~/OneDrive
 ```
 
 ```shell
@@ -29,11 +31,7 @@ ln -s  /mnt/sda/download ~/Downloads
 ## 安装依赖
 
 ```shell
-apt install -y build-essential libcurl4-openssl-dev libsqlite3-dev pkg-config git libnotify-dev
-```
-
-```shell
-apt install -y libnotify-dev
+apt install -y build-essential libcurl4-openssl-dev libsqlite3-dev pkg-config git libnotify-dev curl
 ```
 
 ## 下载编译器
@@ -43,8 +41,8 @@ mkdir -p ~/Downloads && cd ~/Downloads
 ```
 
 ```shell
-git config --global http.https://github.com.proxy http://192.168.0.113:8118
-curl -x 192.168.0.113:8118 -fsS https://dlang.org/install.sh | bash -s ldc
+git config --global http.https://github.com.proxy http://192.168.0.117:8118
+curl -x 192.168.0.117:8118 -fsS https://dlang.org/install.sh | bash -s ldc
 ```
 
 ## 下载源码
@@ -58,7 +56,7 @@ cd onedrive
 ```
 
 ```shell
-./configure DC=~/dlang/ldc-1.28.1/bin/ldmd2
+./configure DC=~/dlang/ldc-1.29.0/bin/ldmd2
 ```
 
 ```shell
@@ -86,7 +84,7 @@ mkdir -p ~/.config/onedrive
 ```
 
 ```shell
-curl -x 192.168.0.113:8118 -fsSL https://raw.githubusercontent.com/abraunegg/onedrive/master/config -o ~/.config/onedrive/config
+curl -x 192.168.0.117:8118 -fsSL https://raw.githubusercontent.com/abraunegg/onedrive/master/config -o ~/.config/onedrive/config
 ```
 
 ```shell
@@ -97,6 +95,7 @@ vim ~/.config/onedrive/config
 systemctl --user enable onedrive
 systemctl --user start onedrive
 systemctl --user restart onedrive
+systemctl --user status onedrive
 ```
 
 查看日志：
