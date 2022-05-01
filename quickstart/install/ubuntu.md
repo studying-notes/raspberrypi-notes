@@ -23,12 +23,11 @@ draft: false  # 草稿
 - [开启 SSH 服务](#开启-ssh-服务)
   - [开机自启](#开机自启)
   - [启用 root 登录](#启用-root-登录)
-  - [设置主机名](#设置主机名)
+  - [永久修改主机名](#永久修改主机名)
   - [上传免密公钥](#上传免密公钥)
 - [换源](#换源)
 - [时间同步](#时间同步)
 - [Python](#python)
-- [Go](#go)
 
 ## 默认用户名与密码
 
@@ -113,16 +112,22 @@ sed -i "s/PermitRootLogin prohibit-password/#PermitRootLogin prohibit-password/g
 systemctl restart ssh
 ```
 
-### 设置主机名
+### 永久修改主机名
 
 ```shell
-echo master > /etc/hostname
+echo ubuntu-raspi-arm64 > /etc/hostname
+```
+
+```shell
+# 重启
+reboot
 ```
 
 ### 上传免密公钥
 
 ```shell
 ssh-copy-id -i ~/.ssh/id_rsa.pub root@master
+ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.0.118
 ssh-copy-id -i ~/.ssh/id_rsa.pub root@raspberrypi
 ```
 
