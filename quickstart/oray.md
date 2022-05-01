@@ -2,7 +2,7 @@
 date: 2022-03-16T21:09:32+08:00
 author: "Rustle Karl"
 
-title: "花生壳内网穿透"
+title: "Linux 系统花生壳内网穿透"
 url:  "posts/raspberrypi/quickstart/oray"  # 永久链接
 tags: [ "Raspberrypi" ]  # 标签
 series: [ "Raspberrypi 学习笔记" ]  # 系列
@@ -13,9 +13,23 @@ draft: false  # 草稿
 ---
 
 ```shell
+apt install net-tools -y
+```
+
+## Raspberry 系统
+
+```shell
 wget https://dl-cdn.oray.com/hsk/linux/phtunnel_5_0_rapi_aarch64.deb
 ```
 
 ```shell
 dpkg -i phtunnel_5_0_rapi_aarch64.deb
+```
+
+## Ubuntu 系统
+
+wget "https://down.oray.com/hsk/linux/phddns_5.2.0_amd64.deb" -O phddns_5.2.0_amd64.deb
+
+```shell
+dpkg -i phddns_5.2.0_amd64.deb
 ```
