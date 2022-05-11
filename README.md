@@ -69,3 +69,7 @@ draft: false  # 草稿
 ## 第三方库
 
 - [OpenCV 安装与测试](libraries/tripartite/opencv.md)
+
+## 常用工具
+
+- [OpenClash 问题与配置](tools/openwrt/openclash.md)
