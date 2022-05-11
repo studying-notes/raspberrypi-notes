@@ -40,6 +40,7 @@ draft: false  # 草稿
 
 - [Ubuntu 系统安装与基本配置](quickstart/install/ubuntu.md)
 - [Raspberry Pi OS 系统安装与基本配置](quickstart/install/raspberrypios.md)
+- [OpenWrt 系统安装与配置](quickstart/install/openwrt.md)
 
 ### 硬件配置
 
