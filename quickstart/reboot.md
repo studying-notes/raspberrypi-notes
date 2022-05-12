@@ -49,7 +49,7 @@ echo '#!/bin/sh -e
 
 #start script
 
-/bin/bash ~/projects/scripts/restart.sh &
+/bin/bash /root/projects/scripts/restart.sh &
 
 #end script
 exit 0
