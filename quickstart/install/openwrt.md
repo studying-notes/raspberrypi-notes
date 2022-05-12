@@ -148,9 +148,7 @@ opkg install dockerd
 ```
 
 ```shell
-opkg install python3
-opkg install python3
-opkg install golang
+opkg install python3 golang
 ```
 
 ## 根挂载点迁移
@@ -174,3 +172,7 @@ umount /tmp/extroot
 ```
 
 重启。
+
+## Docker
+
+opkg install fuse-overlayfs
