@@ -35,3 +35,11 @@ export PATH=$PATH:/usr/local/go/bin
 ```shell
 snap install go --classic
 ```
+
+## Go 模块代理
+
+```shell
+go env -w GOPROXY=https://goproxy.cn,direct
+go env -w GOSUMDB=off
+go env -w GO111MODULE=on
+```
