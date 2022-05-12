@@ -45,6 +45,9 @@ lsblk
 
 ```shell
 mkfs -t ext4 /dev/sda
+
+# openwrt
+mkfs.ext4 /dev/sda
 ```
 
 ### 挂载目录
