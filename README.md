@@ -60,7 +60,6 @@ draft: false  # 草稿
 
 - [NFS 文件系统安装与部署](examples/nfs.md)
 - [代理相关的软件和配置](examples/proxy.md)
-- [树莓派安装 Docker](examples/docker.md)
 - [Chia 配置](examples/chia.md)
 - [树莓派配置 OneDrive](examples/onedrive.md)
 - [树莓派 Ubuntu 系统安装 Selenium 和 Chrome 浏览器](examples/selenium.md)
@@ -73,3 +72,4 @@ draft: false  # 草稿
 
 - [OpenClash 问题与配置](tools/openwrt/openclash.md)
 - [安装 FFmpeg](tools/ffmpeg.md)
+- [安装 Docker](tools/docker.md)
