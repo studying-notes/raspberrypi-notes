@@ -45,7 +45,6 @@ draft: false  # 草稿
 ### 硬件配置
 
 - [树莓派读写移动硬盘](quickstart/hhd.md)
-- [netdata 实时监视性能和运行状况](examples/netdata.md)
 - [安装 GPIO 驱动](quickstart/gpio.md)
 
 ### 软件设置
@@ -59,7 +58,6 @@ draft: false  # 草稿
 ## 功能示例
 
 - [NFS 文件系统安装与部署](examples/nfs.md)
-- [代理相关的软件和配置](examples/proxy.md)
 - [Chia 配置](examples/chia.md)
 - [树莓派配置 OneDrive](examples/onedrive.md)
 - [树莓派 Ubuntu 系统安装 Selenium 和 Chrome 浏览器](examples/selenium.md)
@@ -74,3 +72,4 @@ draft: false  # 草稿
 - [OpenClash 问题与配置](tools/openwrt/openclash.md)
 - [安装 FFmpeg](tools/ffmpeg.md)
 - [安装 Docker](tools/docker.md)
+- [NetData 实时监视性能和运行状况](tools/netdata.md)

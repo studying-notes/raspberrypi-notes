@@ -2,8 +2,8 @@
 date: 2022-03-17T19:01:09+08:00
 author: "Rustle Karl"
 
-title: "netdata 实时监视性能和运行状况"
-url:  "posts/raspberrypi/examples/netdata"  # 永久链接
+title: "NetData 实时监视性能和运行状况"
+url:  "posts/raspberrypi/tools/netdata"  # 永久链接
 tags: [ "Raspberrypi" ]  # 标签
 series: [ "Raspberrypi 学习笔记" ]  # 系列
 categories: [ "学习笔记" ]  # 分类
@@ -22,7 +22,7 @@ wget -O /tmp/netdata-kickstart.sh https://my-netdata.io/kickstart.sh && sh /tmp/
 
 访问即可：
 
-http://master:19999
+http://ubuntu-amd64:19999
 
 ### 监控 CPU 温度
 
