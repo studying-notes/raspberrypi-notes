@@ -2,8 +2,8 @@
 date: 2022-03-05T21:32:30+08:00
 author: "Rustle Karl"
 
-title: "代理相关的软件和配置"
-url:  "posts/raspberrypi/examples/proxy"  # 永久链接
+title: "代理软件和常用工具代理设置"
+url:  "posts/raspberrypi/tools/proxy"  # 永久链接
 tags: [ "Raspberrypi" ]  # 标签
 series: [ "Raspberrypi 学习笔记" ]  # 系列
 categories: [ "学习笔记" ]  # 分类
@@ -12,26 +12,42 @@ toc: true  # 目录
 draft: false  # 草稿
 ---
 
-## Curl 测试代理
+- [wget 代理示例](#wget-代理示例)
+- [curl 代理示例](#curl-代理示例)
+  - [socks5](#socks5)
+  - [http](#http)
+- [apt 代理示例](#apt-代理示例)
+- [git 代理](#git-代理)
+  - [取消代理](#取消代理)
+- [Windows Cmd](#windows-cmd)
+- [Linux Shell](#linux-shell)
+- [v2ray](#v2ray)
+- [Clash](#clash)
+- [proxychains 全局代理](#proxychains-全局代理)
+
+## wget 代理示例
+
+```shell
+wget -e use_proxy=yes -e http_proxy=127.0.0.1:8118 -e https_proxy=127.0.0.1:8118 https://github.com/JetBrains/kotlin/releases/download/v1.6.21/kotlin-compiler-1.6.21.zip
+```
+
+## curl 代理示例
+
+### socks5
 
 ```shell
 curl --socks5 localhost:7891 http://google.com/
-curl --socks5 192.168.4.118:8838 https://www.baidu.com
-curl --socks5 localhost:8838 https://www.baidu.com
+curl --socks5 192.168.4.118:8838 http://google.com/
 ```
+
+### http
 
 ```shell
 curl -x localhost:7890 http://google.com/
 curl -x localhost:8118 http://google.com/
-curl -x localhost:8118 http://baidu.com/
 ```
 
-```shell
-curl -x localhost:7890 http://baidu.com/
-curl -x 192.168.4.118:8118 https://www.baidu.com
-```
-
-## apt 代理
+## apt 代理示例
 
 ```shell
 apt -o Acquire::http::proxy="http://192.168.4.118:8118/" update
@@ -40,6 +56,7 @@ apt -o Acquire::http::proxy="http://192.168.4.118:8118/" -y upgrade
 
 ```shell
 alias apt='apt -o Acquire::http::proxy="http://192.168.4.118:8118/"'
+alias apt='apt -o Acquire::http::proxy="http://192.168.0.117:8118/"'
 ```
 
 ```shell
@@ -50,10 +67,12 @@ Acquire::https::proxy "https://127.0.0.1:8000/";
 EOF
 ```
 
-## Git 代理
+## git 代理
 
 ```shell
-git config --global http.https://github.com.proxy http://192.168.199.140:8118
+# http
+git config --global http.https://github.com.proxy http://192.168.0.117:8118
+# socks
 git config --global http.https://github.com.proxy socks://localhost:8838
 ```
 
@@ -62,7 +81,6 @@ git config --global http.https://github.com.proxy socks://localhost:8838
 ```shell
 git config --global --unset http.https://github.com.proxy
 git config --global --add github.com.proxy ""
-git config --global --add github.com.proxy "localhost:8838"
 ```
 
 ## Windows Cmd
@@ -71,6 +89,8 @@ git config --global --add github.com.proxy "localhost:8838"
 set HTTP_PROXY=http://localhost:8118
 set HTTPS_PROXY=http://localhost:8118
 ```
+
+## Linux Shell
 
 ```
 export HTTP_PROXY=http://localhost:8118
@@ -93,56 +113,14 @@ mkdir -p /etc/v2ray && cp /mnt/extra/mirror/configs/v2ray_config.json /usr/local
 
 ```shell
 systemctl enable v2ray
-```
-
-```shell
-systemctl restart v2ray; systemctl status v2ray
+systemctl disable v2ray
 ```
 
 ```shell
 systemctl restart v2ray
-```
-
-```shell
+systemctl status v2ray
+systemctl restart v2ray
 systemctl stop v2ray
-```
-
-```shell
-systemctl disable v2ray
-```
-
-## 用 proxychains4 测试
-
-```shell
-apt install -y proxychains4
-```
-
-```shell
-apt remove -y proxychains4
-```
-
-```shell
-cp /mnt/sdb/mirror/configs/proxychains.conf /etc/proxychains.conf
-```
-
-```shell
-vim /etc/proxychains.conf
-```
-
-**返回未代理前的本地公网地址**
-
-```shell
-curl ip.sb
-```
-
-返回代理过服务器地址，表示搭建成功，若长时间无响应或返回非服务端 IP 地址的内容则表示搭建失败
-
-```shell
-proxychains4 curl ip.sb
-```
-
-```shell
-proxychains4 curl google.com
 ```
 
 ## Clash
@@ -161,4 +139,20 @@ clash -v
 
 ```shell
 setsid clash -f clash_config.yaml > ~/clash.log 2>&1 & echo "$!" > clash.pid
+```
+
+## proxychains 全局代理
+
+```shell
+apt install -y proxychains4
+```
+
+```shell
+vim /etc/proxychains4.conf
+```
+
+翻到最后添加代理服务器即可
+
+```shell
+socks5   127.0.0.1 8118
 ```

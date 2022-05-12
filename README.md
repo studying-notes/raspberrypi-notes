@@ -70,6 +70,7 @@ draft: false  # 草稿
 
 ## 常用工具
 
+- [代理软件和常用工具代理设置](tools/proxy.md)
 - [OpenClash 问题与配置](tools/openwrt/openclash.md)
 - [安装 FFmpeg](tools/ffmpeg.md)
 - [安装 Docker](tools/docker.md)
