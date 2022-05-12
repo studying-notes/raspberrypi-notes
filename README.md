@@ -23,16 +23,10 @@ draft: false  # 草稿
 
 - `assets/images`: 笔记配图
 - `assets/templates`: 笔记模板
-- `docs`: 基础语法
 - `libraries`: 库
-  - `libraries/standard`: 标准库
   - `libraries/tripartite`: 第三方库
 - `quickstart`: 基础用法
-- `src`: 源码示例
-  - `src/docs`: 基础语法源码示例
-  - `src/libraries/standard`: 标准库源码示例
-  - `src/libraries/tripartite`: 第三方库源码示例
-  - `src/quickstart`: 基础用法源码示例
+- `tools`: 常用工具
 
 ## 基础用法
 
@@ -59,7 +53,6 @@ draft: false  # 草稿
 
 - [NFS 文件系统安装与部署](examples/nfs.md)
 - [Chia 配置](examples/chia.md)
-- [树莓派配置 OneDrive](examples/onedrive.md)
 - [树莓派 Ubuntu 系统安装 Selenium 和 Chrome 浏览器](examples/selenium.md)
 
 ## 第三方库
@@ -73,3 +66,4 @@ draft: false  # 草稿
 - [安装 FFmpeg](tools/ffmpeg.md)
 - [安装 Docker](tools/docker.md)
 - [NetData 实时监视性能和运行状况](tools/netdata.md)
+- [安装第三方 OneDrive](tools/ubuntu/onedrive.md)

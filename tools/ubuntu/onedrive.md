@@ -2,8 +2,8 @@
 date: 2022-03-16T21:18:02+08:00
 author: "Rustle Karl"
 
-title: "树莓派配置 OneDrive"
-url:  "posts/raspberrypi/examples/onedrive"  # 永久链接
+title: "安装第三方 OneDrive"
+url:  "posts/raspberrypi/tools/ubuntu/onedrive"  # 永久链接
 tags: [ "Raspberrypi" ]  # 标签
 series: [ "Raspberrypi 学习笔记" ]  # 系列
 categories: [ "学习笔记" ]  # 分类
@@ -18,13 +18,14 @@ draft: false  # 草稿
 
 ```shell
 mkdir -p /mnt/sda/onedrive
-ln -s  /mnt/sda/onedrive ~/OneDrive
 
-ln -s /media/rustlekarl/Linux/OneDrive ~/OneDrive
+ln -s  /mnt/sda/onedrive ~/OneDrive
+ln -s /media/root/Linux/OneDrive ~/OneDrive
 ```
 
 ```shell
 mkdir -p /mnt/sda/download
+
 ln -s  /mnt/sda/download ~/Downloads
 ```
 
@@ -94,6 +95,7 @@ vim ~/.config/onedrive/config
 ```shell
 systemctl --user enable onedrive
 systemctl --user start onedrive
+systemctl --user stop onedrive
 systemctl --user restart onedrive
 systemctl --user status onedrive
 ```
