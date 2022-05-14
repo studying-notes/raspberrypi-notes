@@ -32,6 +32,10 @@ draft: false  # 草稿
 
 ### 系统安装
 
+```shell
+cinst rpi-imager
+```
+
 - [Ubuntu 系统安装与基本配置](quickstart/install/ubuntu.md)
 - [Raspberry Pi OS 系统安装与基本配置](quickstart/install/raspberrypios.md)
 - [OpenWrt 系统安装与配置](quickstart/install/openwrt.md)
@@ -68,3 +72,4 @@ draft: false  # 草稿
 - [NetData 实时监视性能和运行状况](tools/netdata.md)
 - [安装第三方 OneDrive](tools/ubuntu/onedrive.md)
 - [OpenWrt 开启 VSCode SSH 远程功能](tools/vscode-remote-ssh.md)
+- [阿里云盘 WebDAV 服务](tools/openwrt/aliyundrive.md)
