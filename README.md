@@ -71,6 +71,6 @@ cinst rpi-imager
 - [安装 Docker](tools/docker.md)
 - [NetData 实时监视性能和运行状况](tools/netdata.md)
 - [安装第三方 OneDrive](tools/ubuntu/onedrive.md)
-- [OpenWrt 开启 VSCode SSH 远程功能](tools/vscode-remote-ssh.md)
+- [OpenWrt 开启 VSCode SSH 远程功能](tools/openwrt/vscode-remote-ssh.md)
 - [阿里云盘 WebDAV 服务](tools/openwrt/aliyundrive.md)
 - [syncthing 同步备份数据](tools/openwrt/syncthing.md)
