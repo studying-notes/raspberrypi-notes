@@ -30,6 +30,12 @@ squashfs 重置系统更方便(**专门坑小白的，用了就等着重裝吧**
 
 固件文件名中带有 sysupgrade 字样的文件为升级 OpenWrt 所用的固件，无需解压 gz 文件，可直接在 Luci 面板中升级。
 
+## 根系统分区扩容
+
+https://mlapp.cn/1011.html
+
+必须卸载该存储卡所有分区，然后操作。
+
 利用树莓派官方系统烧录工具写入 SD 卡。
 
 打开电源启动。
@@ -67,7 +73,7 @@ squashfs 重置系统更方便(**专门坑小白的，用了就等着重裝吧**
 用浏览器访问 http://192.168.1.1/，用户名为 root，密码为 password，手动设置：
 
 - 点击「网络 -> 接口 -> LAN -> 修改」
-- IPv4 地址改为 192.168.0.100
+- IPv4 地址改为 192.168.0.10
 - 点击「保存&应用」
 
 更改 LAN 口参数：
@@ -138,20 +144,38 @@ chsh -s /usr/bin/fish
 
 > 不建议了，空间不够，通过 Docker 比较好
 
-```shell
-opkg install docker
-opkg install docker-compose
-opkg install dockerd
+### Docker
 
+```shell
+opkg install docker docker-compose dockerd luci-app-docker
+opkg install luci-app-dockerman luci-i18n-dockerman-zh-cn luci-lib-docker
+opkg install --force-overwrite luci-i18n-docker-zh-cn
+```
+
+```shell
+opkg install fuse-overlayfs
+```
+
+```
 /etc/init.d/dockerd start
 /etc/init.d/dockerd enabled
 ```
 
+### Python
+
 ```shell
-opkg install python3 golang
+opkg install python3 python3-pip
+```
+
+### Golang
+
+```shell
+opkg install golang
 ```
 
 ## 根挂载点迁移
+
+> 前面的扩容方法更好
 
 ### 查看硬盘标识符
 
@@ -172,7 +196,3 @@ umount /tmp/extroot
 ```
 
 重启。
-
-## Docker
-
-opkg install fuse-overlayfs
