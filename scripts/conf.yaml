@@ -1,0 +1,9 @@
+protocol: sftp
+
+host: ubuntu-amd64
+port: 22
+username: root
+password: root
+
+push:
+  .: /root/projects/scripts
