@@ -12,6 +12,12 @@ toc: true  # 目录
 draft: false  # 草稿
 ---
 
+## 官方源安装
+
+```shell
+apt install golang-go
+```
+
 ## 从源码安装
 
 > 无法自动更新
