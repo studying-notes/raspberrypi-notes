@@ -85,7 +85,7 @@ mkdir -p ~/.config/onedrive
 ```
 
 ```shell
-curl -x 192.168.0.117:8118 -fsSL https://raw.githubusercontent.com/abraunegg/onedrive/master/config -o ~/.config/onedrive/config
+curl -fsSL https://raw.githubusercontent.com/abraunegg/onedrive/master/config -o ~/.config/onedrive/config
 ```
 
 ```shell

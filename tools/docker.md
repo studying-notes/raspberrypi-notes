@@ -107,29 +107,12 @@ vim /etc/config/dockerd
 # 把其中的 alt_config_file 取消注释
 ```
 
-```json
-{
-    "data-root": "/mnt/sda2/opt/docker/",
-    "log-level": "warn",
-    "builder": {
-        "gc": {
-            "defaultKeepStorage": "200GB",
-            "enabled": true
-        }
-    },
-    "debug": true,
-    "experimental": true,
-    "features": {
-        "buildkit": true
-    },
-    "insecure-registries": [
-        "ubuntu-amd64:5000"
-    ],
-    "registry-mirrors": [
-        "http://ubuntu-amd64:5000"
-    ]
-}
 ```
+src\tools\docker\linux.config.json
+src\tools\docker\windows.config.json
+```
+
+Windows 下用户目录 .docker 中
 
 ### Ubuntu 使配置文件生效
 

@@ -2,7 +2,7 @@
 date: 2022-03-17T19:01:09+08:00
 author: "Rustle Karl"
 
-title: "NetData 实时监视性能和运行状况"
+title: "Netdata 实时监视性能和运行状况"
 url:  "posts/raspberrypi/tools/netdata"  # 永久链接
 tags: [ "Raspberrypi" ]  # 标签
 series: [ "Raspberrypi 学习笔记" ]  # 系列
@@ -67,5 +67,9 @@ systemctl enable netdata
 #### 卸载
 
 ```shell
-sudo bash /usr/libexec/netdata-uninstaller.sh
+wget https://raw.githubusercontent.com/netdata/netdata/master/packaging/installer/netdata-uninstaller.sh
+
+chmod +x ./netdata-uninstaller.sh
+
+./netdata-uninstaller.sh --yes
 ```

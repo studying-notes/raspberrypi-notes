@@ -24,7 +24,7 @@ cat /usr/share/openclash/openclash_geosite.sh
 
 ```shell
 # 暂时用其他代理
-wget -e use_proxy=yes -e http_proxy=192.168.0.118:8118 -e https_proxy=192.168.0.118:8118 https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat
+wget -e use_proxy=yes -e http_proxy=192.168.0.12:7890 -e https_proxy=192.168.0.12:7890 https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat
 ```
 
 ```shell

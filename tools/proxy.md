@@ -70,6 +70,10 @@ EOF
 ## git 代理
 
 ```shell
+cat ~/.gitconfig
+```
+
+```shell
 # http
 git config --global http.https://github.com.proxy http://192.168.0.117:8118
 # socks
