@@ -55,7 +55,6 @@ cinst rpi-imager
 
 ## 功能示例
 
-- [NFS 文件系统安装与部署](examples/nfs.md)
 - [Chia 配置](examples/chia.md)
 - [树莓派 Ubuntu 系统安装 Selenium 和 Chrome 浏览器](examples/selenium.md)
 
@@ -66,11 +65,14 @@ cinst rpi-imager
 ## 常用工具
 
 - [代理软件和常用工具代理设置](tools/proxy.md)
-- [OpenClash 问题与配置](tools/openwrt/openclash.md)
 - [安装 FFmpeg](tools/ffmpeg.md)
 - [安装 Docker](tools/docker.md)
 - [NetData 实时监视性能和运行状况](tools/netdata.md)
+- [NFS 文件系统安装与部署](tools/nfs.md)
+
 - [安装第三方 OneDrive](tools/ubuntu/onedrive.md)
+
+- [OpenClash 问题与配置](tools/openwrt/openclash.md)
 - [OpenWrt 开启 VSCode SSH 远程功能](tools/openwrt/vscode-remote-ssh.md)
 - [阿里云盘 WebDAV 服务](tools/openwrt/aliyundrive.md)
 - [syncthing 同步备份数据](tools/openwrt/syncthing.md)

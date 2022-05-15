@@ -3,7 +3,7 @@ date: 2022-02-13T00:07:56+08:00
 author: "Rustle Karl"
 
 title: "NFS 文件系统安装与部署"
-url:  "posts/raspberrypi/examples/nfs"  # 永久链接
+url:  "posts/raspberrypi/tools/nfs"  # 永久链接
 tags: [ "Raspberrypi" ]  # 标签
 series: [ "Raspberrypi 学习笔记" ]  # 系列
 categories: [ "学习笔记" ]  # 分类
@@ -60,16 +60,6 @@ df -Th
 ```
 
 ## Windows
-
-CMD 命令行挂载到 N 盘：
-
-```shell
-mount -o nolock \\master\mnt\sda Z:\
-```
-
-```shell
-umount Z:\
-```
 
 打开注册表
 
