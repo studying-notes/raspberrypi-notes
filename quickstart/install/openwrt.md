@@ -32,6 +32,8 @@ squashfs 重置系统更方便(**专门坑小白的，用了就等着重裝吧**
 
 ## 根系统分区扩容
 
+gparted
+
 https://mlapp.cn/1011.html
 
 必须卸载该存储卡所有分区，然后操作。
@@ -132,23 +134,20 @@ opkg remove <packages>
 ## Fish  Shell
 
 ```shell
-opkg install fish
+opkg install fish shadow-chsh
 ```
 
 ```shell
-opkg install shadow-chsh
 chsh -s /usr/bin/fish
 ```
 
 ## 常用软件
 
-> 不建议了，空间不够，通过 Docker 比较好
-
 ### Docker
 
 ```shell
-opkg install docker docker-compose dockerd luci-app-docker
-opkg install luci-app-dockerman luci-i18n-dockerman-zh-cn luci-lib-docker
+opkg install --force-overwrite docker docker-compose dockerd luci-app-docker
+opkg install --force-overwrite luci-app-dockerman luci-i18n-dockerman-zh-cn luci-lib-docker
 opkg install --force-overwrite luci-i18n-docker-zh-cn
 ```
 
@@ -173,26 +172,8 @@ opkg install python3 python3-pip
 opkg install golang
 ```
 
-## 根挂载点迁移
-
-> 前面的扩容方法更好
-
 ### 查看硬盘标识符
 
 ```shell
 lsblk
 ```
-
-### 迁移
-
-```shell
-mkdir -p /tmp/introot
-mkdir -p /tmp/extroot
-mount --bind / /tmp/introot
-mount /dev/mmcblk0p3 /tmp/extroot
-tar -C /tmp/introot -cvf - . | tar -C /tmp/extroot -xf -
-umount /tmp/introot
-umount /tmp/extroot
-```
-
-重启。

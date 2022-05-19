@@ -22,35 +22,14 @@ opkg install luci-app-syncthing syncthing luci-i18n-syncthing-zh-cn
 
 ### Ubuntu
 
-```shell
-# Add the release PGP keys:
-sudo curl -s -o /usr/share/keyrings/syncthing-archive-keyring.gpg https://syncthing.net/release-key.gpg
-```
-
-```shell
-# Add the "stable" channel to your APT sources:
-echo "deb [signed-by=/usr/share/keyrings/syncthing-archive-keyring.gpg] https://apt.syncthing.net/ syncthing stable" | sudo tee /etc/apt/sources.list.d/syncthing.list
-```
-
-```shell
-# Add the "candidate" channel to your APT sources:
-echo "deb [signed-by=/usr/share/keyrings/syncthing-archive-keyring.gpg] https://apt.syncthing.net/ syncthing candidate" | sudo tee /etc/apt/sources.list.d/syncthing.list
-```
-
-```shell
-# Update and install syncthing:
-sudo apt-get update
-sudo apt-get install syncthing
-```
+建议 Docker。
 
 ## 启动程序
 
-```shell
-setsid syncthing serve --home=/root --gui-address=0.0.0.0:8384 &
-```
+OpenWrt 安装后的启动脚本是存在问题的，导致根本无法启动，需要手动编辑 /etc/init.d/syncthing，根本原因是这个脚本与程序同名，导致判断条件错误。
 
 ## 增加监视数据
 
 ```shell
-echo "fs.inotify.max_user_watches=204800" | sudo tee -a /etc/sysctl.conf
+echo "fs.inotify.max_user_watches=204800" | tee -a /etc/sysctl.conf
 ```
