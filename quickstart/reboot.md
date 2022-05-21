@@ -62,6 +62,7 @@ chmod +x /etc/rc.local
 
 ```shell
 systemctl enable rc-local
+systemctl disable rc-local
 ```
 
 ```shell
@@ -70,3 +71,7 @@ systemctl restart rc-local.service
 systemctl stop rc-local.service
 systemctl status rc-local.service
 ```
+
+在 Ubuntu 22.04 上无法成功运行。
+
+建议都用 crontab 实现。

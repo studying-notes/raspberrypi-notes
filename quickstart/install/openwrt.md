@@ -158,9 +158,7 @@ opkg install git-http openssh-keygen openssh-client openssh-sftp-server
 ### Docker
 
 ```shell
-opkg install --force-overwrite docker docker-compose dockerd luci-app-docker
-opkg install --force-overwrite luci-app-dockerman luci-i18n-dockerman-zh-cn luci-lib-docker
-opkg install --force-overwrite luci-i18n-docker-zh-cn
+opkg install --force-overwrite docker docker-compose dockerd luci-app-docker luci-app-dockerman luci-i18n-dockerman-zh-cn luci-lib-docker luci-i18n-docker-zh-cn
 ```
 
 ```shell
@@ -183,10 +181,22 @@ opkg install python3 python3-pip
 opkg install golang
 ```
 
-### 查看硬盘标识符
+### Nginx
 
 ```shell
-lsblk
+opkg install nginx
+```
+
+### GCC
+
+```shell
+opkg install make pkg-config gcc libncurses-dev
+```
+
+### 网络资源查看
+
+```shell
+opkg install iftop
 ```
 
 ## 关闭防火墙
