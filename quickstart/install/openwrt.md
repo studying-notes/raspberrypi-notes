@@ -12,6 +12,10 @@ toc: true  # 目录
 draft: false  # 草稿
 ---
 
+## SSH 同时登陆数量
+
+又被坑死了，一个 IP 同时只能登陆 4 个 SSH，暂时无解。
+
 ## 系统下载地址
 
 https://openwrt.cc/releases/targets/bcm27xx/bcm2711/
@@ -31,6 +35,8 @@ squashfs 重置系统更方便(**专门坑小白的，用了就等着重裝吧**
 固件文件名中带有 sysupgrade 字样的文件为升级 OpenWrt 所用的固件，无需解压 gz 文件，可直接在 Luci 面板中升级。
 
 ## 根系统分区扩容
+
+gparted
 
 https://mlapp.cn/1011.html
 
@@ -132,23 +138,28 @@ opkg remove <packages>
 ## Fish  Shell
 
 ```shell
-opkg install fish
+opkg install fish shadow-chsh
 ```
 
 ```shell
-opkg install shadow-chsh
 chsh -s /usr/bin/fish
 ```
 
 ## 常用软件
 
-> 不建议了，空间不够，通过 Docker 比较好
+### Git & SSH
+
+```shell
+opkg install git-http openssh-keygen openssh-client openssh-sftp-server
+```
+
+缺一个 Git 都不能正常。
 
 ### Docker
 
 ```shell
-opkg install docker docker-compose dockerd luci-app-docker
-opkg install luci-app-dockerman luci-i18n-dockerman-zh-cn luci-lib-docker
+opkg install --force-overwrite docker docker-compose dockerd luci-app-docker
+opkg install --force-overwrite luci-app-dockerman luci-i18n-dockerman-zh-cn luci-lib-docker
 opkg install --force-overwrite luci-i18n-docker-zh-cn
 ```
 
@@ -156,10 +167,9 @@ opkg install --force-overwrite luci-i18n-docker-zh-cn
 opkg install fuse-overlayfs
 ```
 
-```
-/etc/init.d/dockerd start
-/etc/init.d/dockerd enabled
-```
+千万别手动启动，必须在管理界面开启，否则配置都不生效。
+
+容器内居然无法访问互联网，放弃了，还是安安静静当个旁路由吧。。。
 
 ### Python
 
@@ -173,26 +183,17 @@ opkg install python3 python3-pip
 opkg install golang
 ```
 
-## 根挂载点迁移
-
-> 前面的扩容方法更好
-
 ### 查看硬盘标识符
 
 ```shell
 lsblk
 ```
 
-### 迁移
+## 关闭防火墙
+
+表示关闭防火墙并且重启后也不会自动打开
 
 ```shell
-mkdir -p /tmp/introot
-mkdir -p /tmp/extroot
-mount --bind / /tmp/introot
-mount /dev/mmcblk0p3 /tmp/extroot
-tar -C /tmp/introot -cvf - . | tar -C /tmp/extroot -xf -
-umount /tmp/introot
-umount /tmp/extroot
+/etc/init.d/firewall disable && /etc/init.d/firewall stop
+/etc/init.d/network restart
 ```
-
-重启。
