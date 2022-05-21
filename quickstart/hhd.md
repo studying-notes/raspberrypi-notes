@@ -106,6 +106,9 @@ vim /etc/fstab
 UUID=c957486a-bc06-4ef6-b689-664cc1f20a10    /mnt/sda     ext4    defaults    0   0
 UUID=9d53a72a-7324-4cb4-89d2-1c9b02af429c    /mnt/ubuntu.old     ext4    defaults    0   0
 UUID=BCD2E5DDD2E59BC0    /mnt/windows.backup     ntfs    defaults    0   0
+UUID=40ce3bb4-ad4a-494c-989b-f275b178c459    /mnt/linux.backup     ext4    defaults    0   0
+
+UUID=0213da92-bbde-493e-ab5b-84609822fbf1   /mnt/dockerd     ext4    defaults    0   0
 
 # exfat 格式
 UUID=E845-FADE    /mnt/sdb     exfat    defaults    0   0

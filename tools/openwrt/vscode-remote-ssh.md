@@ -13,9 +13,7 @@ draft: false  # 草稿
 ---
 
 ```shell
-opkg install tar
-
-opkg install node
+opkg install tar node
 ```
 
 ```shell
