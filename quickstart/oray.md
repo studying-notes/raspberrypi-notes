@@ -19,11 +19,13 @@ apt install net-tools -y
 ## Raspberry 系统
 
 ```shell
-wget https://dl-cdn.oray.com/hsk/linux/phtunnel_5_0_rapi_aarch64.deb
-```
+apt update
 
-```shell
-dpkg -i phtunnel_5_0_rapi_aarch64.deb
+apt install -y wget
+
+wget "https://dl-cdn.oray.com/hsk/linux/phddns_5.1.0_rapi_aarch64.deb" -O phddns_rapi_aarch64.deb
+
+apt install -fy ./phddns_rapi_aarch64.deb
 ```
 
 ## Ubuntu 系统
