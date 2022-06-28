@@ -23,68 +23,41 @@ draft: false  # 草稿
 
 一个 IP 同时只能登陆 4 个 SSH，暂时无解。
 
-## 二级
+## 无法联网
 
-### 三级
+可以 Ping 外网，可以代理上网，但就是无法 IP/TCP 直接建立连接。
+
+IP 被占用了，或者非允许网段，换一个 IP
+
+## VSCode SSH 远程功能
+
+```shell
+opkg install tar node
+```
+
+```shell
+cd .vscode-server/bin/long_hash/
+```
+
+```shell
+rm node
+```
+
+```shell
+which node
+
+# 替换自带
+cp /usr/bin/node node
+```
+
+## Docker 配置无效
+
+```shell
+killall /usr/bin/dockerd
+```
+
+然后 Web 界面启动 Docker。
 
 ```shell
 
 ```
-
-```shell
-
-```
-
-
-## 二级
-
-### 三级
-
-```shell
-
-```
-
-```shell
-
-```
-
-
-## 二级
-
-### 三级
-
-```shell
-
-```
-
-```shell
-
-```
-
-
-## 二级
-
-### 三级
-
-```shell
-
-```
-
-```shell
-
-```
-
-
-## 二级
-
-### 三级
-
-```shell
-
-```
-
-```shell
-
-```
-
-
