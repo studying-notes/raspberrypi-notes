@@ -14,15 +14,9 @@ draft: false  # 草稿
 
 ## 安装软件
 
-### OpenWrt
-
 ```shell
 opkg install luci-app-syncthing syncthing luci-i18n-syncthing-zh-cn
 ```
-
-### Ubuntu
-
-建议 Docker。
 
 ## 启动程序
 
