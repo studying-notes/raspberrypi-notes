@@ -63,33 +63,35 @@ https://mlapp.cn/1011.html
 
 ## 更改 LAN 口参数
 
-更改 LAN 口IP：
+用浏览器访问 http://192.168.1.1/，用户名为 root，密码为 password，手动设置，点击「网络 -> 接口 -> LAN -> 修改」。
 
-比如路由器管理界面地址为 192.168.0.1，接下来要把树莓派的 IP 改为与路由器同一网段，即 192.168.0.x（`0<x<255`）。
+更改 LAN 口IP，比如路由器管理界面地址为：
 
-这里我把树莓派 LAN 口 IP 设置为 192.168.0.10。
+```
+192.168.0.1
+```
 
-更改 IP 后请记好，以后管理界面都在 192.168.0.100。
+接下来要把树莓派的 IP 改为与路由器同一网段，即 192.168.0.x（`0<x<255`）。
 
-用浏览器访问 http://192.168.1.1/，用户名为 root，密码为 password，手动设置：
+这里我把树莓派 LAN 口 IP 设置为：
 
-- 点击「网络 -> 接口 -> LAN -> 修改」
-- IPv4 地址改为 192.168.0.10
-- 点击「保存&应用」
+```
+192.168.0.16
+```
 
-更改 LAN 口参数：
+更改 IP 后请记好，以后管理界面都在 192.168.0.16。
 
-- 点击「网络 -> 接口 -> LAN -> 修改」
-  - 协议：静态地址
-  - IPV4 地址：192.168.0.10（如果之前修改过，现在保持不变）
-  - IPv4 子网掩码: 255.255.255.0
-  - IPv4 网关：改为上级路由器管理界面 IP：192.168.0.1
-  - Pv4 广播：把上级路由网段 IP 最后一段改为 255： 192.168.0.255
-  - 使用自定义的 DNS 服务器：同样为上级路由器 IP：192.168.0.1
-  - 忽略此接口/不在此接口提供 DHCP 服务 （在页面底部）：打勾
-- 点击「保存&应用」
+全部参数：
 
-设置好后重新连接树莓派网络。
+- 协议：静态地址
+- IPV4 地址：192.168.0.16
+- IPv4 子网掩码: 255.255.255.0
+- IPv4 网关：改为上级路由器管理界面 IP：192.168.0.1
+- Pv4 广播：把上级路由网段 IP 最后一段改为 255： 192.168.0.255
+- 使用自定义的 DNS 服务器：同样为上级路由器 IP：192.168.0.1
+- 忽略此接口/不在此接口提供 DHCP 服务 （在页面底部）：打勾
+
+点击「保存&应用」。设置好后重新连接树莓派网络。
 
 ## 连接路由器
 
@@ -104,15 +106,25 @@ https://mlapp.cn/1011.html
 - IP 获取方式改为 「静态（或手动）」
 - IP 地址：填为路由器网段下任意不冲突的 IP
 - 前缀长度/子网掩码：若提示填写前缀长度，则填写 24，若提示填写子网掩码，则填写 255.255.255.0
-- DNS：填写为树莓派 LAN 口 IP：192.168.0.10
-- 网关/路由器：填写为树莓派 LAN 口 IP：192.168.0.10
+- DNS：填写为树莓派 LAN 口 IP：192.168.0.16
+- 网关/路由器：填写为树莓派 LAN 口 IP：192.168.0.16
 - 其他设置保持默认即可
 
 ## SSH 上传公钥
 
 ```shell
-ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.0.10
+ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.0.16
 ```
+
+## 修改主机名
+
+系统 -> 系统 -> 主机名
+
+可以直接在 Web 管理页修改，不用重启。
+
+## OpenClash 配置
+
+[OpenClash 问题与配置](../../tools/openwrt/openclash.md)
 
 ## 包管理器命令
 
@@ -140,6 +152,8 @@ opkg install fish shadow-chsh
 chsh -s /usr/bin/fish
 ```
 
+Fish 配置见 Linux/PS 笔记。
+
 ## 常用软件
 
 ### Git & SSH
@@ -153,16 +167,14 @@ opkg install git-http openssh-keygen openssh-client openssh-sftp-server
 ### Docker
 
 ```shell
-opkg install --force-overwrite docker docker-compose dockerd luci-app-docker luci-app-dockerman luci-i18n-dockerman-zh-cn luci-lib-docker luci-i18n-docker-zh-cn
-```
-
-```shell
-opkg install fuse-overlayfs
+opkg install --force-overwrite docker docker-compose dockerd luci-app-docker luci-app-dockerman luci-i18n-dockerman-zh-cn luci-lib-docker luci-i18n-docker-zh-cn fuse-overlayfs
 ```
 
 千万别手动启动，必须在管理界面开启，否则配置都不生效。
 
-容器内居然无法访问互联网，放弃了，还是安安静静当个旁路由吧。。。
+```shell
+killall /usr/bin/dockerd
+```
 
 ### Python
 
@@ -174,6 +186,12 @@ opkg install python3 python3-pip
 
 ```shell
 opkg install golang
+```
+
+编译时出现 `cannot find -lpthread`，执行下面的命令：
+
+```shell
+ar -rc /usr/lib/libpthread.a
 ```
 
 ### Nginx
@@ -194,11 +212,52 @@ opkg install make pkg-config gcc libncurses-dev
 opkg install iftop
 ```
 
-## 关闭防火墙
+### Syncthing
 
-表示关闭防火墙并且重启后也不会自动打开
+[syncthing 同步备份数据](../../tools/openwrt/syncthing.md)
+
+### VS Code SSH 远程
+
+[VSCode SSH 远程功能](question.md)
+
+## 迁移旧文件
+
+password
+
+```shell
+scp -rv 'root@192.168.0.10:/root/.config' '/root'
+```
+
+```shell
+scp -v 'root@192.168.0.10:/root/.gitconfig' '/root/.gitconfig'
+```
+
+```shell
+scp -rv 'root@192.168.0.10:/root/.ssh' '/root'
+```
+
+```shell
+scp -rv 'root@192.168.0.10:/root/.ssh/known_hosts' '/root/.ssh/known_hosts'
+```
+
+```shell
+scp -rv 'root@192.168.0.10:/root/projects' '/root'
+```
+
+```shell
+scp -rv 'root@192.168.0.10:/etc/init.d/*' '/etc/init.d/'
+```
+
+------------------------------------------------------------------------------
+
+## 修改硬盘挂载
+
+Web 管理界面 - 系统 - 挂载点/磁盘管理 进行设置。
+
+## 临时关闭防火墙
+
+不少软件会自动打开防火墙。
 
 ```shell
 /etc/init.d/firewall disable && /etc/init.d/firewall stop
-/etc/init.d/network restart
 ```
