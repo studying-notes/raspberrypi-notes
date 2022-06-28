@@ -3,24 +3,13 @@ date: 2022-05-11T19:31:53+08:00
 author: "Rustle Karl"
 
 title: "OpenWrt 系统安装与配置"
-url:  "posts/raspberrypi/quickstart/install/openwrt"  # 永久链接
-tags: [ "Raspberrypi" ]  # 标签
-series: [ "Raspberrypi 学习笔记" ]  # 系列
-categories: [ "学习笔记" ]  # 分类
+url:  "posts/raspberrypi/docs/openwrt/install"  # 永久链接
+tags: [ "Raspberrypi" ]
+categories: [ "Raspberrypi 学习笔记" ]
 
 toc: true  # 目录
 draft: false  # 草稿
 ---
-
-## 让人疯掉的防火墙
-
-搞不懂，防火墙有什么用？自己给自己找麻烦啊。
-
-目前只能每次重启防火墙，否则局域网根本无法访问容器暴露出来的端口。
-
-## SSH 同时登陆数量
-
-又被坑死了，一个 IP 同时只能登陆 4 个 SSH，暂时无解。
 
 ## 系统下载地址
 

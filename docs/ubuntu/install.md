@@ -2,49 +2,17 @@
 date: 2021-01-01T09:38:57+08:00  # 创建日期
 author: "Rustle Karl"  # 作者
 
-# 文章
 title: "Ubuntu 系统安装与基本配置"  # 文章标题
-url:  "posts/raspberrypi/quickstart/install/ubuntu"  # 设置网页永久链接
-tags: [ "raspberrypi", "config"]  # 标签
-series: [ "Raspberrypi 学习笔记" ]  # 系列
-categories: [ "学习笔记" ]  # 分类
+url:  "posts/raspberrypi/docs/ubuntu/install"  # 设置网页永久链接
+tags: [ "raspberrypi", "config"]
+categories: [ "Raspberrypi 学习笔记" ]
 
-# 章节
-weight: 20 # 排序优先级
-chapter: false  # 设置为章节
-
-index: true  # 是否可以被索引
-toc: true  # 是否自动生成目录
-draft: false  # 草稿
+index: true
+toc: true
+draft: false
 ---
 
-- [默认用户名与密码](#默认用户名与密码)
-- [WiFi 联网设置](#wifi-联网设置)
-- [开启 SSH 服务](#开启-ssh-服务)
-  - [开机自启](#开机自启)
-  - [启用 root 登录](#启用-root-登录)
-  - [永久修改主机名](#永久修改主机名)
-  - [上传免密公钥](#上传免密公钥)
-- [换源](#换源)
-- [时间同步](#时间同步)
-- [Python](#python)
-
 ## 默认用户名与密码
-
-好久不搞了，今天重装系统，居然发现登录后无法改密码。
-
-```
-passwd: Authentication token manipulation error
-```
-
-`user-data`
-
-```
-chpasswd:
-  expire: false
-  list:
-  - ubuntu:ubuntu
-```
 
 ```
 ubuntu@ubuntu

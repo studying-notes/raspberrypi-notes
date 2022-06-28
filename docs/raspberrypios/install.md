@@ -2,16 +2,10 @@
 date: 2021-01-01T09:38:57+08:00  # 创建日期
 author: "Rustle Karl"  # 作者
 
-# 文章
-title: "Raspberry Pi OS 系统安装与基本配置"  # 文章标题
-url:  "posts/raspberrypi/quickstart/install/raspberrypios"  # 设置网页永久链接
-tags: [ "raspberrypi", "config"]  # 标签
-series: [ "Raspberrypi 学习笔记" ]  # 系列
-categories: [ "学习笔记" ]  # 分类
-
-# 章节
-weight: 20 # 排序优先级
-chapter: false  # 设置为章节
+title: "Raspberry Pi OS 系统安装与基本配置"
+url:  "posts/raspberrypi/docs/raspberrypios/install"
+tags: [ "raspberrypi", "config"]
+categories: [ "Raspberrypi 学习笔记" ]
 
 index: true  # 是否可以被索引
 toc: true  # 是否自动生成目录
