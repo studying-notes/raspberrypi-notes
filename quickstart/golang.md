@@ -12,6 +12,10 @@ toc: true  # 目录
 draft: false  # 草稿
 ---
 
+## cannot find -lpthread
+
+ar -rc /usr/lib/libpthread.a
+
 ## 官方源安装
 
 ```shell
