@@ -12,39 +12,11 @@ toc: true
 draft: false
 ---
 
-## 默认用户名与密码
-
-```
-ubuntu@ubuntu
-```
-
-## WiFi 联网设置
-
-http://ubuntu.com/tutorials/how-to-install-ubuntu-on-your-raspberry-pi#3-wifi-or-ethernet
+## 开启 SSH 服务
 
 ```shell
-cat /etc/netplan/50-cloud-init.yaml
+apt install -y openssh-server
 ```
-
-编辑该文件，改成以下内容：
-
-```yaml
-network:
-    ethernets:
-        eth0:
-            dhcp4: true
-            optional: true
-    version: 2
-    wifis:
-            wlan0:
-                    optional: true
-                    access-points:
-                        "WiFi名称":
-                                password: "WiFi密码"
-                    dhcp4: true
-```
-
-## 开启 SSH 服务
 
 ### 开机自启
 
@@ -94,27 +66,12 @@ reboot
 ### 上传免密公钥
 
 ```shell
-ssh-copy-id -i ~/.ssh/id_rsa.pub root@master
-ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.0.118
-ssh-copy-id -i ~/.ssh/id_rsa.pub root@raspberrypi
+ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.0.218
 ```
 
 ## 换源
 
 http://mirrors.tuna.tsinghua.edu.cn/help/ubuntu-ports/
-
-```shell
-echo "
-deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ focal main restricted universe multiverse
-# deb-src http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ focal main restricted universe multiverse
-deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ focal-updates main restricted universe multiverse
-# deb-src http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ focal-updates main restricted universe multiverse
-deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ focal-backports main restricted universe multiverse
-# deb-src http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ focal-backports main restricted universe multiverse
-deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ focal-security main restricted universe multiverse
-# deb-src http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ focal-security main restricted universe multiverse
-" > /etc/apt/sources.list
-```
 
 ```shell
 apt update && apt upgrade -y
@@ -153,3 +110,15 @@ pip install toolkit-py -i https://pypi.douban.com/simple  # 个人工具包
 ```shell
 cfm py
 ```
+
+其他配置基本与 AMD64 一致，见 Linux 学习笔记。
+
+## 基础软件
+
+apt install -y vim
+
+## Docker
+
+[安装 Docker](../../tools/docker.md)
+
+## Golang

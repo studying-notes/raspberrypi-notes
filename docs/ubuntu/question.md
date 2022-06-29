@@ -11,6 +11,40 @@ toc: true  # 目录
 draft: false  # 草稿
 ---
 
+## WiFi 联网设置
+
+http://ubuntu.com/tutorials/how-to-install-ubuntu-on-your-raspberry-pi#3-wifi-or-ethernet
+
+```shell
+cat /etc/netplan/50-cloud-init.yaml
+```
+
+编辑该文件，改成以下内容：
+
+```yaml
+network:
+    ethernets:
+        eth0:
+            dhcp4: true
+            optional: true
+    version: 2
+    wifis:
+            wlan0:
+                    optional: true
+                    access-points:
+                        "WiFi名称":
+                                password: "WiFi密码"
+                    dhcp4: true
+```
+
+## 默认用户名与密码
+
+```
+ubuntu@ubuntu
+```
+
+## 首次登录无法改密码
+
 好久不搞了，今天重装系统，居然发现登录后无法改密码。
 
 ```
