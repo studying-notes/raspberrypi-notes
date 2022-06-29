@@ -3,7 +3,7 @@ date: 2021-01-01T09:38:57+08:00  # 创建日期
 author: "Rustle Karl"  # 作者
 
 # 文章
-title: "树莓派 Ubuntu 系统安装 Selenium 和 Chrome 浏览器"  # 文章标题
+title: "安装 Selenium 和 Chrome 浏览器"  # 文章标题
 # description: "文章描述"
 url:  "posts/raspberrypi/examples/selenium"  # 设置网页永久链接
 tags: [ "raspberrypi", "selenium"]  # 标签
@@ -19,20 +19,17 @@ toc: true  # 是否自动生成目录
 draft: false  # 草稿
 ---
 
-## 安装 Snap Store
-
-```shell
-apt install -y snapd
-```
+## 代理设置方法
 
 ```shell
 snap set system proxy.http="http://192.168.199.140:8118"
 snap set system proxy.https="http://192.168.199.140:8118"
 ```
 
+## 安装 Snap Store
+
 ```shell
-systemctl daemon-reload
-systemctl restart snapd
+apt install -y snapd
 ```
 
 ```shell
@@ -57,6 +54,9 @@ snap remove chromium
 
 ```shell
 apt install -y chromium-browser
+```
+
+```shell
 apt install -y chromium-chromedriver
 ```
 
@@ -72,6 +72,8 @@ chromedriver --version
 apt -y install xvfb
 ```
 
+## 虚拟桌面
+
 ```shell
 pip3 install pyvirtualdisplay
 ```
@@ -83,17 +85,7 @@ display = Display(visible=0, size=(800, 600))
 display.start()
 ```
 
-```shell
-apt --fix-broken install -y
-dpkg --configure -a
-apt purge --remove chromium-browser -y
-apt autoremove && sudo apt autoclean -y
-apt install chromium-chromedriver -y
-```
-
-```shell
-
-```
+## 设置默认浏览器
 
 ```shell
 apt install -y xdg-utils
