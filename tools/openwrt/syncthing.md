@@ -22,6 +22,10 @@ opkg install luci-app-syncthing syncthing luci-i18n-syncthing-zh-cn
 
 OpenWrt 安装后的启动脚本是存在问题的，导致根本无法启动，需要手动编辑 /etc/init.d/syncthing，根本原因是这个脚本与程序同名，导致判断条件错误。
 
+```shell
+syncthing -gui-address="0.0.0.0:8384" -logfile="/var/log/syncthing.log" -no-browser >/dev/null
+```
+
 ## 增加监视数据
 
 ```shell
