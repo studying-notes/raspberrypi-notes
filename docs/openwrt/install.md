@@ -206,6 +206,12 @@ opkg install nginx
 opkg install make pkg-config gcc libncurses-dev
 ```
 
+### FFmpeg
+
+```shell
+opkg install ffmpeg ffprobe
+```
+
 ### 网络资源查看
 
 ```shell

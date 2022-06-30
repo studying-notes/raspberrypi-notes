@@ -18,9 +18,6 @@ draft: false  # 草稿
 apt install -y ffmpeg
 ```
 
-```
-snap install --edge ffmpeg
-```
 
 ## OpenWrt
 

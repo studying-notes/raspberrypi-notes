@@ -12,23 +12,6 @@ toc: true  # 目录
 draft: false  # 草稿
 ---
 
-## 链接到外部存储
-
-有必要的情况下：
-
-```shell
-mkdir -p /mnt/sda/onedrive
-
-ln -s  /mnt/sda/onedrive ~/OneDrive
-ln -s /media/root/Linux/OneDrive ~/OneDrive
-```
-
-```shell
-mkdir -p /mnt/sda/download
-
-ln -s  /mnt/sda/download ~/Downloads
-```
-
 ## 安装依赖
 
 ```shell
@@ -41,9 +24,18 @@ apt install -y build-essential libcurl4-openssl-dev libsqlite3-dev pkg-config gi
 mkdir -p ~/Downloads && cd ~/Downloads
 ```
 
+设置 Git 代理：
+
 ```shell
 git config --global http.https://github.com.proxy http://192.168.0.117:8118
-curl -x 192.168.0.117:8118 -fsS https://dlang.org/install.sh | bash -s ldc
+```
+
+```shell
+curl -fsS https://dlang.org/install.sh | bash -s ldc
+```
+
+```shell
+source ~/dlang/ldc-1.29.0/activate.fish
 ```
 
 ## 下载源码
@@ -56,13 +48,19 @@ git clone https://github.com/abraunegg/onedrive.git
 cd onedrive
 ```
 
+## 编译器配置
+
 ```shell
-./configure DC=~/dlang/ldc-1.29.0/bin/ldmd2
+./configure DC=/root/dlang/ldc-1.29.0/bin/ldmd2
 ```
+
+## 编译
 
 ```shell
 make clean; make
 ```
+
+## 安装
 
 ```shell
 make install
@@ -92,6 +90,8 @@ curl -fsSL https://raw.githubusercontent.com/abraunegg/onedrive/master/config -o
 vim ~/.config/onedrive/config
 ```
 
+## 自启服务
+
 ```shell
 systemctl --user enable onedrive
 systemctl --user start onedrive
@@ -100,7 +100,7 @@ systemctl --user restart onedrive
 systemctl --user status onedrive
 ```
 
-查看日志：
+## 查看日志
 
 ```shell
 journalctl --user-unit=onedrive -f

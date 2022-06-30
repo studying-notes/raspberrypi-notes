@@ -89,6 +89,47 @@ apt install ntpdate -y
 ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' > /etc/timezone && ntpdate time2.aliyun.com
 ```
 
+### 安装 Fish 终端
+
+Setp 1. 安装
+
+```shell
+apt install -y fish
+```
+
+Setp 2. 去掉欢迎语句
+
+```shell
+fish -c "set -U fish_greeting"
+```
+
+需进入 Fish 中设置才能生效。
+
+```shell
+set -U fish_greeting
+```
+
+Setp 3. 设置别名，自定义变量
+
+```shell
+vi ~/.config/fish/config.fish
+source ~/.config/fish/config.fish
+```
+
+Setp 4. 修改默认终端
+
+```shell
+usermod -s `which fish`  root
+```
+
+恢复默认终端：
+
+```shell
+usermod -s `which bash`  root
+```
+
+保持默认主题，还是默认好看。
+
 ## Python
 
 ```shell
@@ -111,14 +152,86 @@ pip install toolkit-py -i https://pypi.douban.com/simple  # 个人工具包
 cfm py
 ```
 
+```shell
+pip install opencv-contrib-python
+```
+
 其他配置基本与 AMD64 一致，见 Linux 学习笔记。
 
 ## 基础软件
 
-apt install -y vim
+```shell
+apt install -y vim net-tools wget ffmpeg htop
+```
+
+```
+snap install --edge ffmpeg
+```
 
 ## Docker
 
-[安装 Docker](../../tools/docker.md)
+[安装 Docker](../../tools/ubuntu/docker.md)
+
+## 花生壳内网穿透
+
+[Linux 系统花生壳内网穿透](../../tools/oray.md)
+
+## 磁盘绑定挂载
+
+[树莓派读写移动硬盘](../../quickstart/hhd.md)
 
 ## Golang
+
+### 官方源安装
+
+```shell
+apt install golang-go
+```
+
+### 从 snap 安装
+
+> 自动更新
+
+```shell
+snap install go --classic
+```
+
+### Go 模块代理
+
+```shell
+go env -w GOPROXY=https://goproxy.cn,direct
+go env -w GOSUMDB=off
+go env -w GO111MODULE=on
+```
+
+## 关闭 swap
+
+```shell
+swapoff -a
+```
+
+```shell
+vi /etc/fstab
+# 注释掉 swap 挂载命令
+```
+
+## 通过 VS Code Remote SSH
+
+复制配置文件：
+
+- Fish
+- OneDrive
+
+## OneDrive
+
+[安装第三方 OneDrive](../../tools/ubuntu/onedrive.md)
+
+## 重启任务
+
+```bash
+crontab -e
+```
+
+```bash
+
+```

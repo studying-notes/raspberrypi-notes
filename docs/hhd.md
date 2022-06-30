@@ -5,7 +5,7 @@ author: "Rustle Karl"  # 作者
 # 文章
 title: "树莓派读写移动硬盘"  # 文章标题
 # description: "文章描述"
-url:  "posts/raspberrypi/quickstart/hhd"  # 设置网页永久链接
+url:  "posts/raspberrypi/docs/hhd"  # 设置网页永久链接
 tags: [ "raspberrypi", "hhd"]  # 标签
 series: [ "树莓派学习笔记"]  # 系列
 categories: [ "学习笔记"]  # 分类
@@ -20,10 +20,6 @@ draft: false  # 草稿
 ---
 
 ## 挂载硬盘
-
-```shell
-apt install -y exfat-fuse exfat-utils
-```
 
 树莓派关机状态下插入移动硬盘，开机。
 
@@ -103,12 +99,11 @@ vim /etc/fstab
 
 ```shell
 # ext4 格式
-UUID=c957486a-bc06-4ef6-b689-664cc1f20a10    /mnt/sda     ext4    defaults    0   0
-UUID=9d53a72a-7324-4cb4-89d2-1c9b02af429c    /mnt/ubuntu.old     ext4    defaults    0   0
-UUID=BCD2E5DDD2E59BC0    /mnt/windows.backup     ntfs    defaults    0   0
-UUID=40ce3bb4-ad4a-494c-989b-f275b178c459    /mnt/linux.backup     ext4    defaults    0   0
+UUID=9d53a72a-7324-4cb4-89d2-1c9b02af429c    /mnt/hhd     ext4    defaults    0   0
+UUID=40ce3bb4-ad4a-494c-989b-f275b178c459    /mnt/data     ext4    defaults    0   0
 
-UUID=0213da92-bbde-493e-ab5b-84609822fbf1   /mnt/dockerd     ext4    defaults    0   0
+# ntfs
+UUID=BCD2E5DDD2E59BC0    /mnt/windows     ntfs    defaults    0   0
 
 # exfat 格式
 UUID=E845-FADE    /mnt/sdb     exfat    defaults    0   0
