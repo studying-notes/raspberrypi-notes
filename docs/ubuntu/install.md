@@ -156,7 +156,27 @@ cfm py
 pip install opencv-contrib-python
 ```
 
-其他配置基本与 AMD64 一致，见 Linux 学习笔记。
+### Anaconda
+
+```shell
+wget https://repo.anaconda.com/archive/Anaconda3-2022.05-Linux-x86_64.sh
+```
+
+```shell
+sh Anaconda3-2022.05-Linux-x86_64.sh
+```
+
+```shell
+/opt/anaconda3
+```
+
+```shell
+conda init fish
+```
+
+原则上根发行版永远不要更新，新建虚拟环境。
+
+虽然有 arm64 的，但官方暂时不支持树莓派。
 
 ## 基础软件
 
