@@ -48,6 +48,12 @@ iptables -L DOCKER -t nat  --line-numbers
 iptables -t nat -D DOCKER 编号
 ```
 
+干脆清空规则：
+
+```shell
+iptables -t nat -F DOCKER
+```
+
 ## SSH 同时登陆数量
 
 一个 IP 同时只能登陆 4 个 SSH，暂时无解。
