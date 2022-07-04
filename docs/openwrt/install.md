@@ -254,6 +254,31 @@ scp -rv 'root@192.168.0.10:/root/projects' '/root'
 scp -rv 'root@192.168.0.10:/etc/init.d/*' '/etc/init.d/'
 ```
 
+## Prometheus Node Exporter
+
+```shell
+opkg install prometheus-node-exporter-lua
+opkg install prometheus-node-exporter-lua-netstat
+opkg install prometheus-node-exporter-lua-nat_traffic
+```
+
+```shell
+vim /etc/config/prometheus-node-exporter-lua
+```
+
+```shell
+config prometheus-node-exporter-lua 'main'
+        option listen_interface 'lan'
+        option listen_ipv6 '0'
+        option listen_port '19100'
+```
+
+这样修改后只监听了 lan，不能 localhost 了。
+
+```shell
+curl 192.168.0.16:19100/metrics
+```
+
 ------------------------------------------------------------------------------
 
 ## 修改硬盘挂载

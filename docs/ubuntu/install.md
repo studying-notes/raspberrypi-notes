@@ -181,7 +181,11 @@ conda init fish
 ## 基础软件
 
 ```shell
-apt install -y vim net-tools wget ffmpeg htop
+apt install -y vim net-tools wget ffmpeg htop git
+```
+
+```shell
+apt install -y build-essential libcurl4-openssl-dev libsqlite3-dev pkg-config git libnotify-dev curl
 ```
 
 ```
@@ -198,7 +202,7 @@ snap install --edge ffmpeg
 
 ## 磁盘绑定挂载
 
-[树莓派读写移动硬盘](../../quickstart/hhd.md)
+[树莓派读写移动硬盘](../../docs/hhd.md)
 
 ## Golang
 
