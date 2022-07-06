@@ -24,6 +24,12 @@ apt install -y openssh-server
 systemctl enable ssh.service
 ```
 
+### 重启检测
+
+```shell
+apt remove -y needrestart
+```
+
 ### 启用 root 登录
 
 1. 设置 root 用户密码
@@ -50,6 +56,10 @@ sed -i "s/PermitRootLogin prohibit-password/#PermitRootLogin prohibit-password/g
 
 ```shell
 systemctl restart ssh
+```
+
+```shell
+ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.0.14
 ```
 
 ### 永久修改主机名
@@ -181,7 +191,7 @@ conda init fish
 ## 基础软件
 
 ```shell
-apt install -y vim net-tools wget ffmpeg htop git
+apt install -y vim net-tools wget htop git
 ```
 
 ```shell

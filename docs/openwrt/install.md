@@ -279,6 +279,10 @@ config prometheus-node-exporter-lua 'main'
 curl 192.168.0.16:19100/metrics
 ```
 
+```shell
+/etc/init.d/prometheus-node-exporter-lua start
+```
+
 ------------------------------------------------------------------------------
 
 ## 修改硬盘挂载
