@@ -37,6 +37,23 @@ network:
                     dhcp4: true
 ```
 
+### 静态路由
+
+```yaml
+network:
+    version: 2
+    renderer: networkd
+    ethernets:
+        eth0:
+            addresses:
+                - 192.168.0.14/24
+            nameservers:
+                addresses: [192.168.0.16]
+            routes:
+                - to: default
+                  via: 192.168.0.16
+```
+
 ## 默认用户名与密码
 
 ```
