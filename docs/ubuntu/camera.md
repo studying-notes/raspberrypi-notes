@@ -62,8 +62,10 @@ apt install -y fswebcam
 fswebcam -d /dev/video0 camera.jpg
 ```
 
-```shell
+## 实时监控
 
+```shell
+ffmpeg -hide_banner -r 30  -i /dev/video0 -vcodec h264 -f segment -reset_timestamps 1 -strftime 1 -segment_time 360 door_%Y%m%d%H%M%S.mkv
 ```
 
 ```shell
