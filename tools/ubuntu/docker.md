@@ -30,6 +30,10 @@ draft: false  # 草稿
 ## 一键安装
 
 ```shell
+apt install -y curl
+```
+
+```shell
 curl -fsSL https://get.docker.com -o get-docker.sh
 ```
 
