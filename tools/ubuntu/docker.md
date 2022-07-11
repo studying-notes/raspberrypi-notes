@@ -29,6 +29,12 @@ draft: false  # 草稿
 
 ## 一键安装
 
+官方支持：
+
+```shell
+apt install -y docker.io
+```
+
 ```shell
 apt install -y curl
 ```
@@ -39,6 +45,12 @@ curl -fsSL https://get.docker.com -o get-docker.sh
 
 ```shell
 sh get-docker.sh -s docker --mirror Aliyun
+```
+
+无语的，阿里云限速了。。。不如官方：
+
+```shell
+sh get-docker.sh -s docker
 ```
 
 > 不限系统，可以是树莓派官方，也可以是 Ubuntu。

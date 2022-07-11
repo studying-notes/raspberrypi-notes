@@ -283,6 +283,12 @@ curl 192.168.0.16:19100/metrics
 /etc/init.d/prometheus-node-exporter-lua start
 ```
 
+## 广告拦截
+
+```shell
+opkg install adblock luci-app-adblock luci-i18n-adblock-zh-cn
+```
+
 ------------------------------------------------------------------------------
 
 ## 修改硬盘挂载

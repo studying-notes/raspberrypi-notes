@@ -12,6 +12,32 @@ toc: true
 draft: false
 ---
 
+## 更新系统
+
+```shell
+apt update
+```
+
+```shell
+apt update -o Acquire::http::proxy='http://192.168.0.12:7890'
+```
+
+官方源速度现在也不慢了。
+
+```shell
+apt upgrade -y
+```
+
+```shell
+apt upgrade -y -o Acquire::http::proxy='http://192.168.0.12:7890'
+```
+
+一行命令：
+
+```shell
+apt update && apt upgrade -y
+```
+
 ## 开启 SSH 服务
 
 ```shell
@@ -44,29 +70,16 @@ root
 
 2. 添加设置
 
+看配置添加：
+
 ```shell
+sed -i "s/^PermitRootLogin/#PermitRootLogin/g" /etc/ssh/sshd_config
+sed -i "s/^PasswordAuthentication/#PasswordAuthentication/g" /etc/ssh/sshd_config
 echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
+echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
 ```
 
-```shell
-sed -i "s/PermitRootLogin prohibit-password/#PermitRootLogin prohibit-password/g" /etc/ssh/sshd_config
-```
-
-3. 允许密码登录
-
-```shell
-sudo vim /etc/ssh/sshd_config
-```
-
-```shell
-passwordAuthentication=yes
-```
-
-```shell
-systemctl restart ssh
-```
-
-4. 重启服务
+3. 重启服务
 
 ```shell
 systemctl restart ssh
@@ -207,6 +220,10 @@ pip install opencv-contrib-python
 ### Anaconda
 
 ```shell
+mkdir Download && cd Download
+```
+
+```shell
 wget https://repo.anaconda.com/archive/Anaconda3-2022.05-Linux-x86_64.sh
 ```
 
@@ -229,12 +246,14 @@ conda init fish
 ## 基础软件
 
 ```shell
-apt install -y vim net-tools wget htop git
+apt install -y vim net-tools wget htop git ffmpeg
 ```
 
 ```shell
 apt install -y build-essential libcurl4-openssl-dev libsqlite3-dev pkg-config git libnotify-dev curl
 ```
+
+这种方式可能有问题：
 
 ```
 snap install --edge ffmpeg
@@ -257,7 +276,7 @@ snap install --edge ffmpeg
 ### 官方源安装
 
 ```shell
-apt install golang-go
+apt install -y golang-go
 ```
 
 ### 从 snap 安装
