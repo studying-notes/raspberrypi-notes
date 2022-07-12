@@ -73,6 +73,10 @@ root
 看配置添加：
 
 ```shell
+vim /etc/ssh/sshd_config
+```
+
+```shell
 sed -i "s/^PermitRootLogin/#PermitRootLogin/g" /etc/ssh/sshd_config
 sed -i "s/^PasswordAuthentication/#PasswordAuthentication/g" /etc/ssh/sshd_config
 echo "PermitRootLogin yes" >> /etc/ssh/sshd_config

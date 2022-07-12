@@ -35,6 +35,10 @@ draft: false  # 草稿
 apt install -y docker.io
 ```
 
+不推荐，版本比较落后，安装后还会带来其他问题（无法重装，卸载不干净）。
+
+推荐下面的一键安装。
+
 ```shell
 apt install -y curl
 ```
