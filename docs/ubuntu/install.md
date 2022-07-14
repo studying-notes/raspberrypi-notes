@@ -110,6 +110,12 @@ reboot
 ssh-copy-id -i ~/.ssh/id_rsa.pub root@192.168.0.218
 ```
 
+## 去除登录提示
+
+```shell
+touch ~/.hushlogin
+```
+
 ## 换源
 
 http://mirrors.tuna.tsinghua.edu.cn/help/ubuntu-ports/

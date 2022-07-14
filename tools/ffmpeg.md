@@ -35,3 +35,11 @@ https://pimylifeup.com/compiling-ffmpeg-raspberry-pi/
 浪费时间了，手动编译很费时间，而且 CPU 仍然占用很高。
 
 不如官方仓库下载。
+
+## 读取摄像头
+
+分段保存，且添加时间水印。
+
+```bash
+ffmpeg -hide_banner -r 30  -i /dev/video0 -vcodec h264 -f segment -reset_timestamps 1 -strftime 1 -segment_time 3600 -vf "drawtext=fontsize=100:text='%{localtime\:%Y-%m-%d %H-%M-%S}':fontcolor=green:box=1:boxcolor=yellow:x=20:y=20" door_%Y%m%d%H%M%S.mkv
+```
