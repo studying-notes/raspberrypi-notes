@@ -40,6 +40,14 @@ https://pimylifeup.com/compiling-ffmpeg-raspberry-pi/
 
 分段保存，且添加时间水印。
 
+CPU 编码方式：
+
 ```bash
 ffmpeg -hide_banner -r 30  -i /dev/video0 -vcodec h264 -f segment -reset_timestamps 1 -strftime 1 -segment_time 3600 -vf "drawtext=fontsize=100:text='%{localtime\:%Y-%m-%d %H-%M-%S}':fontcolor=green:box=1:boxcolor=yellow:x=20:y=20" door_%Y%m%d%H%M%S.mkv
+```
+
+GPU 编码方式：
+
+```bash
+ffmpeg -hide_banner -hwaccel cuda -r 30  -i /dev/video0 -vcodec h264_nvenc -f segment -reset_timestamps 1 -strftime 1 -segment_time 3600 -vf "drawtext=fontsize=100:text='%{localtime\:%Y-%m-%d %H-%M-%S}':fontcolor=green:box=1:boxcolor=yellow:x=20:y=20" bed_%Y%m%d%H%M%S.mkv
 ```
