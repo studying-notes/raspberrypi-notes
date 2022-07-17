@@ -133,7 +133,19 @@ apt install ntpdate -y
 ```
 
 ```shell
-ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' > /etc/timezone && ntpdate time2.aliyun.com
+ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' > /etc/timezone
+```
+
+```shell
+ntpdate -u ntp.sjtu.edu.cn
+```
+
+```shell
+date "+%Y-%m-%d %H:%M:%S"
+```
+
+```shell
+date -s  "2022-07-17 10:22:16"
 ```
 
 ### 安装 Fish 终端

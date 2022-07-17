@@ -97,6 +97,7 @@ vim /etc/fstab
 # ext4 格式
 UUID=9d53a72a-7324-4cb4-89d2-1c9b02af429c    /mnt/hhd     ext4    defaults    0   0
 UUID=40ce3bb4-ad4a-494c-989b-f275b178c459    /mnt/data     ext4    defaults    0   0
+UUID=ea9a7db8-b289-4582-b3ad-964d1a019a34    /mnt/volume1     ext4    defaults    0   0
 
 UUID=6ca18585-1fb2-4ba1-be2e-2656c34824d1    /mnt/ssd     ext4    defaults    0   0
 
