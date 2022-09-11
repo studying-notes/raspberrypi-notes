@@ -148,6 +148,12 @@ date "+%Y-%m-%d %H:%M:%S"
 date -s  "2022-07-17 10:22:16"
 ```
 
+手动从互联网获取时间设置：
+
+```shell
+date -s "$(wget -qSO- --max-redirect=0 google.com 2>&1 | grep Date: | cut -d' ' -f5-8)Z"
+```
+
 ### 安装 Fish 终端
 
 Setp 1. 安装
@@ -169,6 +175,10 @@ set -U fish_greeting
 ```
 
 Setp 3. 设置别名，自定义变量
+
+```shell
+mkdir -p ~/.config/fish
+```
 
 ```shell
 vi ~/.config/fish/config.fish
@@ -229,10 +239,6 @@ ln -s /usr/bin/pip3 /usr/bin/pip
 
 ```shell
 pip install toolkit-py -i https://pypi.douban.com/simple  # 个人工具包
-```
-
-```shell
-cfm py
 ```
 
 ```shell

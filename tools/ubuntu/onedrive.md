@@ -27,7 +27,7 @@ mkdir -p ~/Downloads && cd ~/Downloads
 设置 Git 代理：
 
 ```shell
-git config --global http.https://github.com.proxy http://192.168.0.117:8118
+git config --global http.https://github.com.proxy http://192.168.0.16:7890
 ```
 
 ```shell
@@ -35,7 +35,7 @@ curl -fsS https://dlang.org/install.sh | bash -s ldc
 ```
 
 ```shell
-source ~/dlang/ldc-1.29.0/activate.fish
+source ~/dlang/ldc-1.30.0/activate.fish
 ```
 
 ## 下载源码
@@ -51,7 +51,7 @@ cd onedrive
 ## 编译器配置
 
 ```shell
-./configure DC=/root/dlang/ldc-1.29.0/bin/ldmd2
+./configure DC=/root/dlang/ldc-1.30.0/bin/ldmd2
 ```
 
 ## 编译
@@ -68,6 +68,10 @@ make install
 
 ```shell
 deactivate
+```
+
+```shell
+onedrive --version
 ```
 
 ```shell
